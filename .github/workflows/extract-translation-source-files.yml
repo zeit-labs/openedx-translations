@@ -5,9 +5,7 @@
 name: Extract Translation Source Files
 
 on:
-  workflow_dispatch:    # by request
-  schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+  - pull_request
 
 jobs:
   setup-branch:
@@ -129,28 +127,28 @@ jobs:
         # repos with errors running extract_translations
         # * frontend-template-application
         repo:
-          - frontend-app-account
-          - frontend-app-authn
-          - frontend-app-communications
-          - frontend-app-course-authoring
-          - frontend-app-discussions
-          - frontend-app-ecommerce
-          - frontend-app-enterprise-public-catalog
-          - frontend-app-gradebook
-          - frontend-app-learner-dashboard
-          - frontend-app-learner-record
-          - frontend-app-learning
-          - frontend-app-library-authoring
-          - frontend-app-ora-grading
-          - frontend-app-payment
-          - frontend-app-profile
-          - frontend-app-program-console
-          - frontend-app-support-tools
-          - frontend-component-footer
-          - frontend-component-header
           - frontend-lib-content-components
-          - paragon
-          - studio-frontend
+          - frontend-app-account
+#          - frontend-app-authn
+#          - frontend-app-communications
+#          - frontend-app-course-authoring
+#          - frontend-app-discussions
+#          - frontend-app-ecommerce
+#          - frontend-app-enterprise-public-catalog
+#          - frontend-app-gradebook
+#          - frontend-app-learner-dashboard
+#          - frontend-app-learner-record
+#          - frontend-app-learning
+#          - frontend-app-library-authoring
+#          - frontend-app-ora-grading
+#          - frontend-app-payment
+#          - frontend-app-profile
+#          - frontend-app-program-console
+#          - frontend-app-support-tools
+#          - frontend-component-footer
+          - frontend-component-header
+#          - paragon
+#          - studio-frontend
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: [setup-branch, python-translations]
