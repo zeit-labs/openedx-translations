@@ -5,9 +5,7 @@
 name: Extract Translation Source Files
 
 on:
-  workflow_dispatch:    # by request
-  schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+  - pull_request
 
 jobs:
   setup-branch:
@@ -148,6 +146,7 @@ jobs:
           - frontend-app-support-tools
           - frontend-component-footer
           - frontend-component-header
+          - frontend-lib-content-components
           - paragon
           - studio-frontend
     runs-on: ubuntu-latest
