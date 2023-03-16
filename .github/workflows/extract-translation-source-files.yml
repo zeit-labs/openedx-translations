@@ -126,7 +126,7 @@ jobs:
         # repos with errors running extract_translations
         # * frontend-template-application
         repo:
-          - frontend-lib-special-exams
+          - studio-frontend
 #          - frontend-app-account
 #          - frontend-app-authn
 #          - frontend-app-communications
@@ -163,7 +163,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo }}
-          ref: fix-i18n
+          ref: standarize-mfe-pattern
           path: translations/${{ matrix.repo }}
 
       # Sets up node/npm
