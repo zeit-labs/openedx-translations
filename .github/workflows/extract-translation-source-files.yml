@@ -5,9 +5,7 @@
 name: Extract Translation Source Files
 
 on:
-  workflow_dispatch:    # by request
-  schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+  - pull_request
 
 jobs:
   setup-branch:
@@ -39,8 +37,8 @@ jobs:
       max-parallel: 1
       matrix:
         repo:
-          - course-discovery
-          - credentials
+#          - course-discovery
+          - RecommenderXBlock
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: [setup-branch]
@@ -129,27 +127,28 @@ jobs:
         # repos with errors running extract_translations
         # * frontend-template-application
         repo:
-          - frontend-app-account
-          - frontend-app-authn
-          - frontend-app-communications
-          - frontend-app-course-authoring
-          - frontend-app-discussions
-          - frontend-app-ecommerce
-          - frontend-app-enterprise-public-catalog
-          - frontend-app-gradebook
-          - frontend-app-learner-dashboard
-          - frontend-app-learner-record
-          - frontend-app-learning
-          - frontend-app-library-authoring
-          - frontend-app-ora-grading
-          - frontend-app-payment
-          - frontend-app-profile
-          - frontend-app-program-console
-          - frontend-app-support-tools
-          - frontend-component-footer
-          - frontend-component-header
-          - paragon
           - studio-frontend
+#          - frontend-app-account
+#          - frontend-app-authn
+#          - frontend-app-communications
+#          - frontend-app-course-authoring
+#          - frontend-app-discussions
+#          - frontend-app-ecommerce
+#          - frontend-app-enterprise-public-catalog
+#          - frontend-app-gradebook
+#          - frontend-app-learner-dashboard
+#          - frontend-app-learner-record
+#          - frontend-app-learning
+#          - frontend-app-library-authoring
+#          - frontend-app-ora-grading
+#          - frontend-app-payment
+#          - frontend-app-profile
+#          - frontend-app-program-console
+#          - frontend-app-support-tools
+#          - frontend-component-footer
+#          - frontend-component-header
+#          - paragon
+#          - studio-frontend
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: [setup-branch, python-translations]
@@ -164,7 +163,8 @@ jobs:
       - name: clone openedx/${{ matrix.repo }}
         uses: actions/checkout@v3
         with:
-          repository: openedx/${{ matrix.repo }}
+          repository: Zeit-Labs/${{ matrix.repo }}
+          ref: standarize-mfe-pattern
           path: translations/${{ matrix.repo }}
 
       # Sets up node/npm
@@ -242,3 +242,4 @@ jobs:
         run: |
           echo "The branch was not merged because the branch had 0 commits."
           git push origin -d ${{ needs.setup-branch.outputs.branch }}
+
