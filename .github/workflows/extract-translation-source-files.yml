@@ -37,7 +37,8 @@ jobs:
       max-parallel: 1
       matrix:
         repo:
-          - course-discovery
+#          - course-discovery
+          - RecommenderXBlock
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: [setup-branch]
@@ -241,3 +242,4 @@ jobs:
         run: |
           echo "The branch was not merged because the branch had 0 commits."
           git push origin -d ${{ needs.setup-branch.outputs.branch }}
+
