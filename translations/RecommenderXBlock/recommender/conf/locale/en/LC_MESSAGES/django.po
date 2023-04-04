@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-04 04:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: recommender.py:310
+msgid "Invalid location URL provided"
+msgstr ""
+
+#: recommender.py:321
+msgid "The resource you are attempting to provide already exists"
+msgstr ""
+
+#: recommender.py:334
+msgid ""
+"The resource you are attempting to provide has been disallowed by the staff. "
+"Reason: "
+msgstr ""
+
+#: recommender.py:351
+msgid "The selected resource does not exist"
+msgstr ""
+
+#: recommender.py:399
+msgid "Size of uploaded file exceeds threshold"
+msgstr ""
+
+#: recommender.py:410
+msgid "The configuration of pyfs is not properly set"
+msgstr ""
+
+#: recommender.py:765
+msgid "Endorse resource without permission"
+msgstr ""
+
+#: recommender.py:809
+msgid "You don't have the permission to remove this resource"
+msgstr ""
+
+#: recommender.py:860
+msgid "Only staff can import resources"
+msgstr ""
+
+#: recommender.py:871 recommender.py:898
+msgid "Please submit the JSON file obtained with the download resources button"
+msgstr ""
+
+#: recommender.py:911
+msgid "Tried to access flagged resources without staff permission"
+msgstr ""
+#: static/js/src/cats.js:45
+msgid ""
+"Recommend a new resource which may be helpful to other students solving this "
+"problem"
+msgstr ""
+
+#: static/js/src/cats.js:46
+msgid "Edit this resource"
+msgstr ""
+
+#: static/js/src/cats.js:47
+msgid "Upvote if the resource is helpful"
+msgstr ""
+
+#: static/js/src/cats.js:48
+msgid "Downvote if the resource is not helpful"
+msgstr ""
+
+#: static/js/src/cats.js:49
+msgid "Votes"
+msgstr ""
+
+#: static/js/src/cats.js:50
+msgid "Resource title"
+msgstr ""
+
+#: static/js/src/cats.js:51
+msgid "Remove this resource and give the reason why you do that"
+msgstr ""
+
+#: static/js/src/cats.js:52
+msgid "Preview image (typically, a screenshot)"
+msgstr ""
+
+#: static/js/src/cats.js:53 static/js/src/cats.js:57
+msgid ""
+"Give a short (1-3 sentence) summary of the resource; ideally, this should be "
+"concise, but give enough detail to let students know whether this resources "
+"is useful to them"
+msgstr ""
+
+#: static/js/src/cats.js:54 static/js/src/cats.js:58
+msgid "Cut-and-paste the URL of the resource."
+msgstr ""
+
+#: static/js/src/cats.js:55 static/js/src/cats.js:59
+msgid ""
+"Give a paragraph of summary of the resource; the summary should be more "
+"detailed than you gave in Title"
+msgstr ""
+
+#: static/js/src/cats.js:56 static/js/src/cats.js:60
+msgid ""
+"Upload a preview screenshot (in GIF/PNG/JPG) of the resource; ideally, this "
+"should let students know whether this resources is useful to them"
+msgstr ""
+
+#: static/js/src/cats.js:61
+msgid "Go back to the main list"
+msgstr ""
+
+#: static/js/src/cats.js:62
+msgid "Give a meaningful reason for why this resource should be removed"
+msgstr ""
+
+#: static/js/src/cats.js:63
+msgid "Flag this resource as problematic and give your reason"
+msgstr ""
+
+#: static/js/src/cats.js:64
+msgid "Delete this resource"
+msgstr ""
+
+#: static/js/src/cats.js:65
+msgid "Show a list of student-recommented related resources"
+msgstr ""
+
+#: static/js/src/cats.js:66
+msgid "Hide the recommendations list"
+msgstr ""
+
+#: static/js/src/cats.js:67
+msgid "Check the icon to endorse this resource"
+msgstr ""
+
+#: static/js/src/cats.js:68
+msgid "This resource is endorsed by staff"
+msgstr ""
+
+#: static/js/src/cats.js:69
+msgid "Click to view resources for removal"
+msgstr ""
+
+#: static/js/src/cats.js:70
+msgid "Click to view resources in ordinary decreasing-vote order"
+msgstr ""
+
+#: static/js/src/cats.js:73
+msgid "Here is a list of reasons why students think this resource problematic:"
+msgstr ""
+
+#: static/js/src/cats.js:74
+msgid "The reason why it is endorsed is:"
+msgstr ""
+
+#: static/js/src/cats.js:75
+msgid "Resource: "
+msgstr ""
+
+#: static/js/src/cats.js:76
+msgid "votes"
+msgstr ""
+
+#: static/js/src/cats.js:84
+msgid ""
+"The content you typed has not been submitted yet. Are you sure to go back?"
+msgstr ""
+
+#: static/js/src/cats.js:87 static/js/src/cats.js:179
+msgid "Import resources"
+msgstr ""
+
+#: static/js/src/cats.js:88
+msgid "Suggest resource"
+msgstr ""
+
+#: static/js/src/cats.js:89 static/js/src/cats.js:187
+msgid "Edit existing resource"
+msgstr ""
+
+#: static/js/src/cats.js:90
+msgid "Flag Resource"
+msgstr ""
+
+#: static/js/src/cats.js:91
+msgid "Endorse Resource"
+msgstr ""
+
+#: static/js/src/cats.js:92
+msgid "Remove Resource"
+msgstr ""
+
+#: static/js/src/cats.js:96
+msgid "Upload resources in JSON format to the database."
+msgstr ""
+
+#: static/js/src/cats.js:97
+msgid ""
+"Suggest a resource which can help other students with this problem. Please "
+"do not give the answer directly."
+msgstr ""
+
+#: static/js/src/cats.js:98
+msgid ""
+"Edit the resource and make it more helpful for other students with this "
+"problem. Please do not give the answer directly."
+msgstr ""
+
+#: static/js/src/cats.js:99
+msgid ""
+"Why would you like to flag this resource? The staff will review all flagged "
+"resources, and remove inappropriate ones (spam, incorrect, abusive, etc.). "
+"Giving a clear reason will help us do this efficiently."
+msgstr ""
+
+#: static/js/src/cats.js:100
+msgid "Endorse this resource and give the reason why you do that."
+msgstr ""
+
+#: static/js/src/cats.js:101
+msgid "Remove this resource and give the reason why you do that."
+msgstr ""
+
+#: static/js/src/cats.js:137
+msgid "Hide related resources"
+msgstr ""
+
+#: static/js/src/cats.js:138
+msgid "Show related resources"
+msgstr ""
+
+#: static/js/src/cats.js:171
+msgid "From page {fromPage} To page {toPage}"
+msgstr ""
+
+#: static/js/src/cats.js:176
+msgid "Export resources"
+msgstr ""
+
+#: static/js/src/cats.js:178
+msgid "Entering import resource mode"
+msgstr ""
+
+#: static/js/src/cats.js:182
+msgid "Entering add resource mode"
+msgstr ""
+
+#: static/js/src/cats.js:183
+msgid "Add new resource"
+msgstr ""
+
+#: static/js/src/cats.js:186
+msgid "Entering edit resource mode"
+msgstr ""
+
+#: static/js/src/cats.js:190
+msgid "Entering flag resource mode"
+msgstr ""
+
+#: static/js/src/cats.js:191
+msgid "Flag resource"
+msgstr ""
+
+#: static/js/src/cats.js:192
+msgid "Unflag resource"
+msgstr ""
+
+#: static/js/src/cats.js:195
+msgid "Endorse resource"
+msgstr ""
+
+#: static/js/src/cats.js:196
+msgid "Unendorse resource"
+msgstr ""
+
+#: static/js/src/cats.js:198
+msgid "Remove resource"
+msgstr ""
+
+#: static/js/src/cats.js:199
+msgid "Hovering resource"
+msgstr ""
+
+#: static/js/src/cats.js:200
+msgid "A resource was clicked"
+msgstr ""
+
+#: static/js/src/cats.js:201
+msgid "Back to resource list mode"
+msgstr ""
