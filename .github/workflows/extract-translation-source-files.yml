@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo }}
-          ref: shadinaif/temp
+          ref: shadinaif/FC-0012-OEP-58.04
           path: translations/${{ matrix.repo }}
 
       # Sets up Python
