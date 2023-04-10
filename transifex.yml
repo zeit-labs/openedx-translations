@@ -5,8 +5,8 @@ git:
     file_format: PO
     source_file_extension: po
     source_language: en
-    source_file_dir: translations/RecommenderXBlock/recommender/conf/locale/en/
-    translation_files_expression: 'translations/RecommenderXBlock/recommender/conf/locale/<lang>/'
+    source_file_dir: translations/xblock-drag-and-drop-v2/drag_and_drop_v2/conf/locale/en/
+    translation_files_expression: 'translations/xblock-drag-and-drop-v2/drag_and_drop_v2/conf/locale/<lang>/'
 
   # course-discovery
   - filter_type: dir

@@ -38,7 +38,7 @@ jobs:
       matrix:
         repo:
 #          - course-discovery
-          - RecommenderXBlock
+          - xblock-drag-and-drop-v2
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: [setup-branch]
@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo }}
-          ref: shadinaif/FC-0012-OEP-58.04
+          ref: shadinaif/FC-0012-OEP-58
           path: translations/${{ matrix.repo }}
 
       # Sets up Python
