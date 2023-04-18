@@ -39,9 +39,10 @@ jobs:
         repo:
 #          - course-discovery
 #          - credentials
-#          - RecommenderXBlock
-          - ['xblock-drag-and-drop-v2', 'shadinaif/FC-0012-OEP-58']
-          - ['xblock-submit-and-compare', 'shadinaif/temp']
+          - ['DoneXBlock', 'shadinaif/FC-0012-OEP-58']
+#          - ['RecommenderXBlock', 'shadinaif/FC-0012-OEP-58']
+#          - ['xblock-drag-and-drop-v2', 'shadinaif/FC-0012-OEP-58']
+          - ['xblock-submit-and-compare', 'shadinaif/FC-0012-OEP-58']
           - ['xblock-qualtrics-survey', 'shadinaif/FC-0012-OEP-58']
     runs-on: ubuntu-latest
     continue-on-error: true
