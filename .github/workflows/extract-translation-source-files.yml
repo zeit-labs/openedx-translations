@@ -41,6 +41,7 @@ jobs:
 #          - credentials
 #          - ['completion', 'shadinaif/FC-0012-OEP-58']
           - ['edx-ace', 'shadinaif/FC-0012-OEP-58']
+          - ['edx-bulk-grades', 'shadinaif/FC-0012-OEP-58']
 #          - ['edx-ora2', 'shadinaif/FC-0012-OEP-58']
 #          - ['edx-proctoring', 'shadinaif/FC-0012-OEP-58']
 #          - ['DoneXBlock', 'shadinaif/FC-0012-OEP-58']
