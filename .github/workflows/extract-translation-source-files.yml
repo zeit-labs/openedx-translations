@@ -40,12 +40,13 @@ jobs:
 #          - course-discovery
 #          - credentials
 #          - ['completion', 'shadinaif/FC-0012-OEP-58']
-          - ['edx-ace', 'shadinaif/FC-0012-OEP-58']
-          - ['edx-bulk-grades', 'shadinaif/FC-0012-OEP-58']
+#          - ['edx-ace', 'shadinaif/FC-0012-OEP-58']
+#          - ['edx-bulk-grades', 'shadinaif/FC-0012-OEP-58']
 #          - ['edx-ora2', 'shadinaif/FC-0012-OEP-58']
 #          - ['edx-proctoring', 'shadinaif/FC-0012-OEP-58']
 #          - ['DoneXBlock', 'shadinaif/FC-0012-OEP-58']
 #          - ['RecommenderXBlock', 'shadinaif/FC-0012-OEP-58']
+          - ['xblock-adventure', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-drag-and-drop-v2', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-submit-and-compare', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-qualtrics-survey', 'shadinaif/FC-0012-OEP-58']
