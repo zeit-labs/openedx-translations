@@ -1,6 +1,14 @@
 git:
   filters:
 
+  # completion
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/completion/completion/conf/locale/en/
+    translation_files_expression: 'translations/completion/completion/conf/locale/<lang>/'
+
   # course-discovery
   - filter_type: dir
     file_format: PO
@@ -16,6 +24,46 @@ git:
     source_language: en
     source_file_dir: translations/credentials/credentials/conf/locale/en/
     translation_files_expression: 'translations/credentials/credentials/conf/locale/<lang>/'
+
+  # DoneXBlock
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/DoneXBlock/done/conf/locale/en/
+    translation_files_expression: 'translations/DoneXBlock/done/conf/locale/<lang>/'
+
+  # edx-ace
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/edx-ace/edx_ace/conf/locale/en/
+    translation_files_expression: 'translations/edx-ace/edx_ace/conf/locale/<lang>/'
+
+  # edx-bulk-grades
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/edx-bulk-grades/bulk_grades/conf/locale/en/
+    translation_files_expression: 'translations/edx-bulk-grades/bulk_grades/conf/locale/<lang>/'
+
+  # edx-ora2
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/edx-ora2/openassessment/conf/locale/en/
+    translation_files_expression: 'translations/edx-ora2/openassessment/conf/locale/<lang>/'
+
+  # edx-proctoring
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/edx-proctoring/edx_proctoring/conf/locale/en/
+    translation_files_expression: 'translations/edx-proctoring/edx_proctoring/conf/locale/<lang>/'
 
   # frontend-app-account
   - filter_type: file
@@ -185,3 +233,35 @@ git:
     source_language: en
     source_file: translations/studio-frontend/src/i18n/transifex_input.json
     translation_files_expression: 'translations/studio-frontend/src/i18n/messages/<lang>.json'
+
+  # xblock-adventure
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/xblock-adventure/adventure/conf/locale/en/
+    translation_files_expression: 'translations/xblock-adventure/adventure/conf/locale/<lang>/'
+
+  # xblock-drag-and-drop-v2
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/xblock-drag-and-drop-v2/drag_and_drop_v2/conf/locale/en/
+    translation_files_expression: 'translations/xblock-drag-and-drop-v2/drag_and_drop_v2/conf/locale/<lang>/'
+
+  # xblock-submit-and-compare
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/xblock-submit-and-compare/submit_and_compare/conf/locale/en/
+    translation_files_expression: 'translations/xblock-submit-and-compare/submit_and_compare/conf/locale/<lang>/'
+
+  # xblock-qualtrics-survey
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/xblock-qualtrics-survey/qualtricssurvey/conf/locale/en/
+    translation_files_expression: 'translations/xblock-qualtrics-survey/qualtricssurvey/conf/locale/<lang>/'
