@@ -242,6 +242,14 @@ git:
     source_file_dir: translations/xblock-adventure/adventure/conf/locale/en/
     translation_files_expression: 'translations/xblock-adventure/adventure/conf/locale/<lang>/'
 
+  # xblock-google-drive
+  - filter_type: dir
+    file_format: PO
+    source_file_extension: po
+    source_language: en
+    source_file_dir: translations/xblock-google-drive/google_drive/conf/locale/en/
+    translation_files_expression: 'translations/xblock-google-drive/google_drive/conf/locale/<lang>/'
+
   # xblock-drag-and-drop-v2
   - filter_type: dir
     file_format: PO
