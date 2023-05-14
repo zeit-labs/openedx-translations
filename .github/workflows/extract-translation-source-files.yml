@@ -51,6 +51,7 @@ jobs:
 #          - ['xblock-google-drive', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-free-text-response', 'shadinaif/FC-0012-OEP-58']
           - ['xblock-image-modal', 'shadinaif/FC-0012-OEP-58']
+          - ['xblock-image-explorer', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-submit-and-compare', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-qualtrics-survey', 'shadinaif/FC-0012-OEP-58']
     runs-on: ubuntu-latest
