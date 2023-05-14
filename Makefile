@@ -9,3 +9,4 @@ upgrade: piptools  ## update the requirements/*.txt files with the latest packag
 	pip install -qr requirements/pip.txt
 	pip install -qr requirements/pip_tools.txt
 	pip-compile --rebuild --upgrade -o requirements/translations.txt requirements/translations.in
+
