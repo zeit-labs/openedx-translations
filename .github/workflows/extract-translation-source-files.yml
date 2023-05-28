@@ -37,7 +37,7 @@ jobs:
       max-parallel: 1
       matrix:
         repo:
-          - ['AudioXBlock', 'shadinaif/FC-0012-OEP-58']
+#          - ['AudioXBlock', 'shadinaif/FC-0012-OEP-58']
 #          - course-discovery
 #          - credentials
 #          - ['completion', 'shadinaif/FC-0012-OEP-58']
@@ -54,6 +54,7 @@ jobs:
 #          - ['xblock-free-text-response', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-image-modal', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-image-explorer', 'shadinaif/FC-0012-OEP-58']
+          - ['xblock-sql-grader', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-submit-and-compare', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-qualtrics-survey', 'shadinaif/FC-0012-OEP-58']
     runs-on: ubuntu-latest
