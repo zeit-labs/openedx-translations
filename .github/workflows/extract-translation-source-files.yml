@@ -37,6 +37,7 @@ jobs:
       max-parallel: 1
       matrix:
         repo:
+          - ['AudioXBlock', 'shadinaif/FC-0012-OEP-58']
 #          - course-discovery
 #          - credentials
 #          - ['completion', 'shadinaif/FC-0012-OEP-58']
@@ -45,7 +46,7 @@ jobs:
 #          - ['edx-ora2', 'shadinaif/FC-0012-OEP-58']
 #          - ['edx-proctoring', 'shadinaif/FC-0012-OEP-58']
 #          - ['DoneXBlock', 'shadinaif/FC-0012-OEP-58']
-          - ['FeedbackXBlock', 'shadinaif/FC-0012-OEP-58']
+#          - ['FeedbackXBlock', 'shadinaif/FC-0012-OEP-58']
 #          - ['RecommenderXBlock', 'shadinaif/fix-message-compile']
 #          - ['xblock-adventure', 'shadinaif/FC-0012-OEP-58']
 #          - ['xblock-drag-and-drop-v2', 'shadinaif/FC-0012-OEP-58']
