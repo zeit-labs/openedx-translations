@@ -27,7 +27,7 @@ The links in this directory are automatically created by the ``extract-translati
 Pulling ``edx-platform`` translations with Atlas
 ------------------------------------------------
 
-The ``atlass`` command has been integrated in the ``edx-platform`` repository therefore there's no need to run ``atlas pull`` manually. Regardless, this section shows the manual command arguments because it's needed for some advanced usage of the edX Platform such as installing custom XBlocks that's not part of the openedx github organizaiton.
+The ``atlas`` command has been integrated in the ``edx-platform`` repository therefore there's no need to run ``atlas pull`` manually. Regardless, this section shows the manual command arguments because it's needed for some advanced usage of the edX Platform such as installing custom XBlocks that's not part of the openedx github organizaiton.
 
 The ``atlas`` command to pull from this directory for Drag and Drop v2 XBlock can be executed in two ways:
 
