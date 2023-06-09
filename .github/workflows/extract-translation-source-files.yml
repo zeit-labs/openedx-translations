@@ -41,44 +41,46 @@ jobs:
         repo:
           # Note: Add `module_name` for all edx-platform plugins and XBlocks such as DoneXBlock and completion, but not
           #       for micrsoervices and IDAs such as course-discovery and credentials.
-          - repo_name: AudioXBlock
-            python_module_name: audio
-          - repo_name: completion
-            python_module_name: completion
-          - repo_name: course-discovery  # not a plugin
-          - repo_name: credentials  # not a plugin
-          - repo_name: DoneXBlock
-            python_module_name: done
-          - repo_name: edx-ace
-            python_module_name: edx_ace
-          - repo_name: edx-bulk-grades
-            python_module_name: bulk_grades
-          - repo_name: edx-ora2
-            python_module_name: openassessment
-          - repo_name: edx-proctoring
-            python_module_name: edx_proctoring
-          - repo_name: FeedbackXBlock
-            python_module_name: feedback
-          - repo_name: RecommenderXBlock
-            python_module_name: recommender
-          - repo_name: xblock-drag-and-drop-v2
-            python_module_name: drag_and_drop_v2
-          - repo_name: xblock-free-text-response
-            python_module_name: freetextresponse
-          - repo: xblock-google-drive
-            python_module_name: google_drive
-          - repo: xblock-image-explorer
-            python_module_name: image_explorer
-          - repo: xblock-image-modal
-            python_module_name: imagemodal
-          - repo_name: xblock-lti-consumer
-            python_module_name: lti_consumer
-          - repo_name: xblock-qualtrics-survey
-            python_module_name: qualtricssurvey
-          - repo_name: xblock-sql-grader
-            python_module_name: sql_grader
-          - repo_name: xblock-submit-and-compare
-            python_module_name: submit_and_compare
+#          - repo_name: AudioXBlock
+#            python_module_name: audio
+#          - repo_name: completion
+#            python_module_name: completion
+#          - repo_name: course-discovery  # not a plugin
+#          - repo_name: credentials  # not a plugin
+          - repo_name: credentials-themes
+            python_module_name: edx_credentials_themes
+#          - repo_name: DoneXBlock
+#            python_module_name: done
+#          - repo_name: edx-ace
+#            python_module_name: edx_ace
+#          - repo_name: edx-bulk-grades
+#            python_module_name: bulk_grades
+#          - repo_name: edx-ora2
+#            python_module_name: openassessment
+#          - repo_name: edx-proctoring
+#            python_module_name: edx_proctoring
+#          - repo_name: FeedbackXBlock
+#            python_module_name: feedback
+#          - repo_name: RecommenderXBlock
+#            python_module_name: recommender
+#          - repo_name: xblock-drag-and-drop-v2
+#            python_module_name: drag_and_drop_v2
+#          - repo_name: xblock-free-text-response
+#            python_module_name: freetextresponse
+#          - repo: xblock-google-drive
+#            python_module_name: google_drive
+#          - repo: xblock-image-explorer
+#            python_module_name: image_explorer
+#          - repo: xblock-image-modal
+#            python_module_name: imagemodal
+#          - repo_name: xblock-lti-consumer
+#            python_module_name: lti_consumer
+#          - repo_name: xblock-qualtrics-survey
+#            python_module_name: qualtricssurvey
+#          - repo_name: xblock-sql-grader
+#            python_module_name: sql_grader
+#          - repo_name: xblock-submit-and-compare
+#            python_module_name: submit_and_compare
 
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -133,9 +135,13 @@ jobs:
           git config --global user.email "translations-bot@openedx.org"
           git config --global user.name "edx-transifex-bot"
           # Change directory to translations/${{ matrix.repo.repo_name }}
+          echo "matrix.repo.repo_name" && echo "${{ matrix.repo.repo_name }}"
           cd translations/${{ matrix.repo.repo_name }}
           # finds the directory containing the english locale usually located in
           # */*/conf/locale/en
+          echo "--------Status2-----------" && git status
+          echo "--------find-----------" && find . -type d -regex ".+conf\/locale\/en$" && echo "--------find-------^^^^"
+          echo "--------ls -l-----------" && ls -l && echo "--------ls -l-------^^^^"
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
           # remove translations/${{ matrix.repo.repo_name }}/.git so we don't commit a submodule
           rm -rf .git
@@ -143,10 +149,19 @@ jobs:
           # extract_translations into EN_DIR and adds them
           DJANGO_PATH=$(find $EN_DIR -name 'django.po')
           DJANGOJS_PATH=$(find $EN_DIR -name 'djangojs.po')
+          echo "--------Vars-----------"
+          echo $EN_DIR
+          echo "-----------------------"
+          echo $DJANGO_PATH
+          echo "-----------------------"
+          echo $DJANGOJS_PATH
+          echo "--------Vars-----------^^^^^^"
           # use (-f) to force add the files even if they are ignored in the source repo
           git add $DJANGO_PATH $DJANGOJS_PATH -f -v
+          echo "--------Status3-----------" && git status
           # Check the git statuses of the translation source files
           echo "GIT_STATUS=$(git status $DJANGO_PATH $DJANGOJS_PATH -s | wc -l)" >> $GITHUB_ENV
+          echo "--------Status4-----------" && git status
 
       - name: create plugin/xblock link
         if: ${{ matrix.repo.python_module_name }}
@@ -277,8 +292,7 @@ jobs:
       - name: create pull request
         id: createPR
         env:
-          # This token requires Write access to the openedx-translations repo
-          GITHUB_TOKEN: ${{ secrets.EDX_TRANSIFEX_BOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           echo "COMMIT_COUNT=$(git rev-list HEAD ^origin/main | wc -l)" >> $GITHUB_ENV
           echo "PR_URL=$(gh pr create -d --title 'chore: add updated translation source files' --body 'This PR is auto-generated by [extract-translation-source-files](https://github.com/Zeit-Labs/openedx-translations/blob/master/.github/workflows/extract-translation-source-files.yml).')" >> $GITHUB_ENV
