@@ -142,7 +142,9 @@ jobs:
           # */*/conf/locale/en
           echo "--------Status2-----------" && git status
           echo "--------find-----------" && find . -type d -regex ".+conf\/locale\/en$" && echo "--------find-------^^^^"
+          echo "--------find2-----------" && find . -type d -regex ".+conf/locale/en$" && echo "--------find2-------^^^^"
           echo "--------ls -l-----------" && ls -l && echo "--------ls -l-------^^^^"
+          echo "--------ls -l-----------" && ls -l edx_credentials_themes && echo "--------ls edx_credentials_themes -l-------^^^^"
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
           # remove translations/${{ matrix.repo.repo_name }}/.git so we don't commit a submodule
           rm -rf .git
