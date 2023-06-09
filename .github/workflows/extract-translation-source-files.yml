@@ -138,6 +138,7 @@ jobs:
           cd translations/${{ matrix.repo.repo_name }}
           # finds the directory containing the english locale usually located in
           # */*/conf/locale/en
+          echo "--------Status2-----------" && git status
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
           # remove translations/${{ matrix.repo.repo_name }}/.git so we don't commit a submodule
           rm -rf .git
@@ -145,10 +146,19 @@ jobs:
           # extract_translations into EN_DIR and adds them
           DJANGO_PATH=$(find $EN_DIR -name 'django.po')
           DJANGOJS_PATH=$(find $EN_DIR -name 'djangojs.po')
+          echo "--------Vars-----------"
+          echo $EN_DIR
+          echo "-----------------------"
+          echo $DJANGO_PATH
+          echo "-----------------------"
+          echo $DJANGOJS_PATH
+          echo "--------Vars-----------^^^^^^"
           # use (-f) to force add the files even if they are ignored in the source repo
           git add $DJANGO_PATH $DJANGOJS_PATH -f -v
+          echo "--------Status3-----------" && git status
           # Check the git statuses of the translation source files
           echo "GIT_STATUS=$(git status $DJANGO_PATH $DJANGOJS_PATH -s | wc -l)" >> $GITHUB_ENV
+          echo "--------Status4-----------" && git status
 
       - name: create plugin/xblock link
         if: ${{ matrix.repo.python_module_name }}
