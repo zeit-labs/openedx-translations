@@ -47,9 +47,8 @@ jobs:
 #            python_module_name: completion
 #          - repo_name: course-discovery  # not a plugin
 #          - repo_name: credentials  # not a plugin
-          - repo_name: credentials-themes
-            repo_branch: shadinaif/FC-0012-OEP-58
-            python_module_name: edx_credentials_themes
+          - repo_name: credentials-themes  # not an edx-platform plugin
+            repo_branch: master
 #          - repo_name: DoneXBlock
 #            python_module_name: done
 #          - repo_name: edx-ace
