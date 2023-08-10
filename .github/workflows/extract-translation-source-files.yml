@@ -5,6 +5,7 @@
 name: Extract Translation Source Files
 
 on:
+  push:
   workflow_dispatch:    # by request
   schedule:
     - cron: '0 0 * * *'  # every day at midnight
