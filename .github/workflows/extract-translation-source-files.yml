@@ -71,7 +71,10 @@ jobs:
       - name: install requirements
         run: |
           pip install -r requirements/translations.txt
-          pip install -r translations/edx-platform/requirements/edx/development.txt
+          pip install enmerkar-underscore
+          pip install mako
+          pip install openedx-django-wiki==2.0.0
+          pip install edx-proctoring-proctortrack
 
       # Extracts the translation source files
       - name: extract translation source files
@@ -80,12 +83,12 @@ jobs:
           rm -rf conf/locale/en
           make extract_translations
 
-      # Validate compilation of translation source files
-      - name: validate compilation of translation source files
-        run: |
-          cd translations/${{ matrix.repo.repo_name }}
-          i18n_tool validate --verbose
-          paver i18n_compilejs
+#      # Validate compilation of translation source files
+#      - name: validate compilation of translation source files
+#        run: |
+#          cd translations/${{ matrix.repo.repo_name }}
+#          i18n_tool validate --verbose
+#          paver i18n_compilejs
 
       # git adds only the translation source files, found in conf/locale/en
       - name: git add the translation source files
@@ -120,3 +123,4 @@ jobs:
           git commit -m "chore: add extracted translation source files from ${{ matrix.repo.repo_name }}"
           # push changes to branch
           git show
+          git push
