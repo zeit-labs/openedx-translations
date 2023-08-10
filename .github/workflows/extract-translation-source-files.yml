@@ -71,11 +71,7 @@ jobs:
       - name: install requirements
         run: |
           pip install -r requirements/translations.txt
-          pip install enmerkar-underscore
-          pip install mako
-          pip install pybabel
-          pip install openedx-django-wiki==2.0.0
-          pip install edx-proctoring-proctortrack
+          pip install -r translations/${{ matrix.repo.repo_name }}/requirements/edx/kernel.in
 
       # Extracts the translation source files
       - name: extract translation source files
