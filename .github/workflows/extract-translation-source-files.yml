@@ -82,6 +82,7 @@ jobs:
         run: |
           cd translations/${{ matrix.repo.repo_name }}
           rm -rf conf/locale/en
+          mkdir -p conf/locale/en/LC_MESSAGES
           make extract_translations
 
 #      # Validate compilation of translation source files
@@ -105,7 +106,7 @@ jobs:
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
           # If the directory is not found, exit with an error. This can happen if we add a repository that doesn't
           # comply with OEP-58, or it still doesn't have any translations yet
-          if [ -z "$EN_DIR" ]; then
+          if [ -f "${EN_DIR}/LC_MESSAGES/mako.po" ]; then
             echo "Missing English locale directory for ${{ matrix.repo.repo_name }}!"
             echo "exiting with error!"
             exit 1
