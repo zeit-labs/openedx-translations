@@ -5,6 +5,7 @@
 name: Extract Translation Source Files
 
 on:
+  push:
   workflow_dispatch:    # by request
   schedule:
     - cron: '0 0 * * *'  # every day at midnight
@@ -41,44 +42,45 @@ jobs:
         repo:
           # Note: Add `module_name` for all edx-platform plugins and XBlocks such as DoneXBlock and completion, but not
           #       for micrsoervices and IDAs such as course-discovery and credentials.
-          - repo_name: AudioXBlock
-            python_module_name: audio
-          - repo_name: completion
-            python_module_name: completion
-          - repo_name: course-discovery  # not a plugin
-          - repo_name: credentials  # not a plugin
-          - repo_name: DoneXBlock
-            python_module_name: done
-          - repo_name: edx-ace
-            python_module_name: edx_ace
-          - repo_name: edx-bulk-grades
-            python_module_name: bulk_grades
-          - repo_name: edx-ora2
-            python_module_name: openassessment
-          - repo_name: edx-proctoring
-            python_module_name: edx_proctoring
-          - repo_name: FeedbackXBlock
-            python_module_name: feedback
-          - repo_name: RecommenderXBlock
-            python_module_name: recommender
-          - repo_name: xblock-drag-and-drop-v2
-            python_module_name: drag_and_drop_v2
-          - repo_name: xblock-free-text-response
-            python_module_name: freetextresponse
-          - repo_name: xblock-google-drive
-            python_module_name: google_drive
-          - repo_name: xblock-image-explorer
-            python_module_name: image_explorer
-          - repo_name: xblock-image-modal
-            python_module_name: imagemodal
-          - repo_name: xblock-lti-consumer
-            python_module_name: lti_consumer
-          - repo_name: xblock-qualtrics-survey
-            python_module_name: qualtricssurvey
-          - repo_name: xblock-sql-grader
-            python_module_name: sql_grader
-          - repo_name: xblock-submit-and-compare
-            python_module_name: submit_and_compare
+#          - repo_name: AudioXBlock
+#            python_module_name: audio
+#          - repo_name: completion
+#            python_module_name: completion
+#          - repo_name: course-discovery  # not a plugin
+#          - repo_name: credentials  # not a plugin
+#          - repo_name: DoneXBlock
+#            python_module_name: done
+#          - repo_name: edx-ace
+#            python_module_name: edx_ace
+#          - repo_name: edx-bulk-grades
+#            python_module_name: bulk_grades
+#          - repo_name: edx-ora2
+#            python_module_name: openassessment
+#          - repo_name: edx-proctoring
+#            python_module_name: edx_proctoring
+#          - repo_name: FeedbackXBlock
+#            python_module_name: feedback
+#          - repo_name: RecommenderXBlock
+#            python_module_name: recommender
+#          - repo_name: xblock-drag-and-drop-v2
+#            python_module_name: drag_and_drop_v2
+#          - repo_name: xblock-free-text-response
+#            python_module_name: freetextresponse
+#          - repo_name: xblock-google-drive
+#            python_module_name: google_drive
+#          - repo_name: xblock-image-explorer
+#            python_module_name: image_explorer
+#          - repo_name: xblock-image-modal
+#            python_module_name: imagemodal
+#          - repo_name: xblock-lti-consumer
+#            python_module_name: lti_consumer
+#          - repo_name: xblock-qualtrics-survey
+#            python_module_name: qualtricssurvey
+#          - repo_name: xblock-sql-grader
+#            python_module_name: sql_grader
+#          - repo_name: xblock-submit-and-compare
+#            python_module_name: submit_and_compare
+          - repo_name: edx-platform
 
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -112,6 +114,19 @@ jobs:
       - name: install requirements
         run: pip install -r requirements/translations.txt
 
+      - name: prepare the environment with edx-platform specific changes
+        if: matrix.repo.repo_name == 'edx-platform'
+        run: |
+          # This is needed for edx-platform base.txt packages
+          sudo apt install -y libxml2-dev libxmlsec1-dev libxslt1-dev
+
+          # Ensure edx-platform external apps (e.g. wiki) are installled
+          pip install -r translations/${{ matrix.repo.repo_name }}/requirements/edx/base.txt
+
+          # Remove unwanted `en` django/djangojs po files
+          rm -rf translations/${{ matrix.repo.repo_name }}/conf/locale/en
+          mkdir -p translations/${{ matrix.repo.repo_name }}/conf/locale/en/LC_MESSAGES
+
       # Extracts the translation source files
       - name: extract translation source files
         run: |
@@ -135,7 +150,8 @@ jobs:
           cd translations/${{ matrix.repo.repo_name }}
           # finds the directory containing the english locale usually located in
           # */*/conf/locale/en
-          EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
+          EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$" | head -n 1)
+          echo "EN_DIR=$EN_DIR" >> $GITHUB_ENV
           # If the directory is not found, exit with an error. This can happen if we add a repository that doesn't
           # comply with OEP-58, or it still doesn't have any translations yet
           if [ -z "$EN_DIR" ]; then
@@ -145,6 +161,11 @@ jobs:
           fi
           # remove translations/${{ matrix.repo.repo_name }}/.git so we don't commit a submodule
           rm -rf .git
+
+      # All repositories except for edx-platform follows the standard Django i18n pattern
+      - name: add repo translation source files openedx-translations
+        if: matrix.repo.repo_name != 'edx-platform'
+        run: |
           # finds the django.po and djangojs.po files generated by make
           # extract_translations into EN_DIR and adds them
           DJANGO_PATH=$(find $EN_DIR -name 'django.po')
@@ -154,6 +175,15 @@ jobs:
           # Check the git statuses of the translation source files
           echo "GIT_STATUS=$(git status $DJANGO_PATH $DJANGOJS_PATH -s | wc -l)" >> $GITHUB_ENV
 
+      # edx-platform has multiple i18n files
+      - name: add edx-platform translation source files openedx-translations
+        if: matrix.repo.repo_name == 'edx-platform'
+        run: |
+          git add -f -v $(find $EN_DIR -name '*.po')
+          # Check the git statuses of the translation source files
+          echo "GIT_STATUS=$(git status conf/locale/en -s | wc -l)" >> $GITHUB_ENV
+
+      # This applies for all repositories that are _installable_ inside edx-platform
       - name: create plugin/xblock link
         if: ${{ matrix.repo.python_module_name }}
         run: |
@@ -188,30 +218,30 @@ jobs:
         # repos with errors running extract_translations
         # * frontend-template-application
         repo:
-          - frontend-app-admin-portal
-          - frontend-app-publisher
-          - frontend-app-account
-          - frontend-app-authn
-          - frontend-app-communications
-          - frontend-app-course-authoring
-          - frontend-app-discussions
-          - frontend-app-ecommerce
-          - frontend-app-enterprise-public-catalog
-          - frontend-app-gradebook
-          - frontend-app-learner-dashboard
-          - frontend-app-learner-record
-          - frontend-app-learning
-          - frontend-app-library-authoring
-          - frontend-app-ora-grading
-          - frontend-app-payment
-          - frontend-app-profile
-          - frontend-app-program-console
-          - frontend-app-support-tools
-          - frontend-component-footer
-          - frontend-component-header
-          - frontend-lib-content-components
-          - frontend-lib-special-exams
-          - paragon
+#          - frontend-app-admin-portal
+#          - frontend-app-publisher
+#          - frontend-app-account
+#          - frontend-app-authn
+#          - frontend-app-communications
+#          - frontend-app-course-authoring
+#          - frontend-app-discussions
+#          - frontend-app-ecommerce
+#          - frontend-app-enterprise-public-catalog
+#          - frontend-app-gradebook
+#          - frontend-app-learner-dashboard
+#          - frontend-app-learner-record
+#          - frontend-app-learning
+#          - frontend-app-library-authoring
+#          - frontend-app-ora-grading
+#          - frontend-app-payment
+#          - frontend-app-profile
+#          - frontend-app-program-console
+#          - frontend-app-support-tools
+#          - frontend-component-footer
+#          - frontend-component-header
+#          - frontend-lib-content-components
+#          - frontend-lib-special-exams
+#          - paragon
           - studio-frontend
     runs-on: ubuntu-latest
     continue-on-error: true
