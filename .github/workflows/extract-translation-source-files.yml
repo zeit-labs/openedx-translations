@@ -81,12 +81,12 @@ jobs:
           mkdir -p conf/locale/en/LC_MESSAGES
           make extract_translations
 
-#      # Validate compilation of translation source files
-#      - name: validate compilation of translation source files
-#        run: |
-#          cd translations/${{ matrix.repo.repo_name }}
-#          i18n_tool validate --verbose
-#          paver i18n_compilejs
+      # Validate compilation of translation source files
+      - name: validate compilation of translation source files
+        run: |
+          cd translations/${{ matrix.repo.repo_name }}
+          i18n_tool validate --verbose
+          paver i18n_compilejs
 
       # git adds only the translation source files, found in conf/locale/en
       - name: git add the translation source files
