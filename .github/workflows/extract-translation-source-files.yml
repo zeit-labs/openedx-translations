@@ -5,10 +5,9 @@
 name: Extract Translation Source Files
 
 on:
-  push:
-#  workflow_dispatch:    # by request
-#  schedule:
-#    - cron: '0 0 * * *'  # every day at midnight
+  workflow_dispatch:    # by request
+  schedule:
+    - cron: '0 0 * * *'  # every day at midnight
 
 jobs:
   setup-branch:
@@ -34,13 +33,56 @@ jobs:
         git checkout -b ${{ steps.dynamic_branch.outputs.branch }}
         git push --set-upstream origin ${{ steps.dynamic_branch.outputs.branch }}
 
-  edx-platform-translations:
+  python-translations:
     strategy:
+      # using max-parallel to avoid git push/pull issues when running in parallel
+      max-parallel: 1
       matrix:
         repo:
+          # Note: Add `module_name` for all edx-platform plugins and XBlocks such as DoneXBlock and completion, but not
+          #       for micrsoervices and IDAs such as course-discovery and credentials.
+          - repo_name: AudioXBlock
+            python_module_name: audio
+          - repo_name: completion
+            python_module_name: completion
+          - repo_name: course-discovery  # not a plugin
+          - repo_name: credentials  # not a plugin
+          - repo_name: DoneXBlock
+            python_module_name: done
+          - repo_name: edx-ace
+            python_module_name: edx_ace
+          - repo_name: edx-bulk-grades
+            python_module_name: bulk_grades
+          - repo_name: edx-ora2
+            python_module_name: openassessment
+          - repo_name: edx-proctoring
+            python_module_name: edx_proctoring
+          - repo_name: FeedbackXBlock
+            python_module_name: feedback
+          - repo_name: RecommenderXBlock
+            python_module_name: recommender
+          - repo_name: xblock-drag-and-drop-v2
+            python_module_name: drag_and_drop_v2
+          - repo_name: xblock-free-text-response
+            python_module_name: freetextresponse
+          - repo_name: xblock-google-drive
+            python_module_name: google_drive
+          - repo_name: xblock-image-explorer
+            python_module_name: image_explorer
+          - repo_name: xblock-image-modal
+            python_module_name: imagemodal
+          - repo_name: xblock-lti-consumer
+            python_module_name: lti_consumer
+          - repo_name: xblock-qualtrics-survey
+            python_module_name: qualtricssurvey
+          - repo_name: xblock-sql-grader
+            python_module_name: sql_grader
+          - repo_name: xblock-submit-and-compare
+            python_module_name: submit_and_compare
           - repo_name: edx-platform
+
     runs-on: ubuntu-latest
-#    continue-on-error: true
+    continue-on-error: true
     needs: [setup-branch]
 
     steps:
@@ -52,7 +94,7 @@ jobs:
 
       # Installs gettext, a dependency for extracting translation source files in django
       - name: install gettext
-        run: sudo apt install -y gettext libxml2-dev libxmlsec1-dev libxslt1-dev
+        run: sudo apt install -y gettext
 
       # Clones the  repository
       - name: clone openedx/${{ matrix.repo.repo_name }}
@@ -67,26 +109,34 @@ jobs:
         with:
           python-version: '3.8'
 
-      # Installs Python requirements
+      # Installs Python requirements from translations.txt
       - name: install requirements
+        run: pip install -r requirements/translations.txt
+
+      - name: prepare the environment with edx-platform specific changes
+        if: matrix.repo.repo_name == 'edx-platform'
         run: |
-          pip install -r requirements/translations.txt
+          # This is needed for edx-platform base.txt packages
+          sudo apt install -y libxml2-dev libxmlsec1-dev libxslt1-dev
+
+          # Ensure edx-platform external apps (e.g. wiki) are installled
           pip install -r translations/${{ matrix.repo.repo_name }}/requirements/edx/base.txt
+
+          # Remove unwanted `en` django/djangojs po files
+          rm -rf translations/${{ matrix.repo.repo_name }}/conf/locale/en
+          mkdir -p translations/${{ matrix.repo.repo_name }}/conf/locale/en/LC_MESSAGES
 
       # Extracts the translation source files
       - name: extract translation source files
         run: |
           cd translations/${{ matrix.repo.repo_name }}
-          rm -rf conf/locale/en
-          mkdir -p conf/locale/en/LC_MESSAGES
           make extract_translations
 
       # Validate compilation of translation source files
       - name: validate compilation of translation source files
         run: |
           cd translations/${{ matrix.repo.repo_name }}
-          i18n_tool validate --verbose
-          paver i18n_compilejs
+          django-admin compilemessages --locale en
 
       # git adds only the translation source files, found in conf/locale/en
       - name: git add the translation source files
@@ -100,18 +150,47 @@ jobs:
           # finds the directory containing the english locale usually located in
           # */*/conf/locale/en
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
+          echo "EN_DIR=${EN_DIR}" >> "$GITHUB_ENV"
           # If the directory is not found, exit with an error. This can happen if we add a repository that doesn't
           # comply with OEP-58, or it still doesn't have any translations yet
-          if [ -f "${EN_DIR}/LC_MESSAGES/mako.po" ]; then
+          if [ -z "$EN_DIR" ]; then
             echo "Missing English locale directory for ${{ matrix.repo.repo_name }}!"
             echo "exiting with error!"
             exit 1
           fi
           # remove translations/${{ matrix.repo.repo_name }}/.git so we don't commit a submodule
           rm -rf .git
+
+      # All repositories except for edx-platform follows the standard Django i18n pattern
+      - name: add repo translation source files openedx-translations
+        if: matrix.repo.repo_name != 'edx-platform'
+        run: |
+          # finds the django.po and djangojs.po files generated by make
+          # extract_translations into EN_DIR and adds them
+          DJANGO_PATH=$(find $EN_DIR -name 'django.po')
+          DJANGOJS_PATH=$(find $EN_DIR -name 'djangojs.po')
+          # use (-f) to force add the files even if they are ignored in the source repo
+          git add $DJANGO_PATH $DJANGOJS_PATH -f -v
+          # Check the git statuses of the translation source files
+          echo "GIT_STATUS=$(git status $DJANGO_PATH $DJANGOJS_PATH -s | wc -l)" >> $GITHUB_ENV
+
+      # edx-platform has multiple i18n files
+      - name: add edx-platform translation source files openedx-translations
+        if: matrix.repo.repo_name == 'edx-platform'
+        run: |
           git add -f -v $EN_DIR/*.po
           # Check the git statuses of the translation source files
           echo "GIT_STATUS=$(git status conf/locale/en -s | wc -l)" >> $GITHUB_ENV
+
+      # This applies for all repositories that are _installable_ inside edx-platform
+      - name: create plugin/xblock link
+        if: ${{ matrix.repo.python_module_name }}
+        run: |
+          cd translations/edx-platform-links
+          if [ ! -d "${{ matrix.repo.python_module_name }}" ]; then
+            ln -sd ../${{ matrix.repo.repo_name }}/${{ matrix.repo.python_module_name }} ${{ matrix.repo.python_module_name }}
+            git add ${{ matrix.repo.python_module_name }}
+          fi
 
       # Attempts to commit the translation source files if there is a difference
       - name: git commit the translation source files
@@ -120,5 +199,138 @@ jobs:
           # commit the changes
           git commit -m "chore: add extracted translation source files from ${{ matrix.repo.repo_name }}"
           # push changes to branch
-          git show
           git push
+
+  js-translations:
+    strategy:
+      # using max-parallel to avoid git push/pull issues when running in parallel
+      max-parallel: 1
+      matrix:
+        # repos missing extract_translations target in makefile:
+        # * frontend-platform
+        # * frontend-enterprise?
+        # * frontend-app-learner-portal-enterprise
+        # * frontend-build?
+        # * frontend-app-learner-portal-programs
+        # * frontend-component-cookie-policy-banner
+        # * frontend-app-programs-dashboard
+        # repos with errors running extract_translations
+        # * frontend-template-application
+        repo:
+          - frontend-app-admin-portal
+          - frontend-app-publisher
+          - frontend-app-account
+          - frontend-app-authn
+          - frontend-app-communications
+          - frontend-app-course-authoring
+          - frontend-app-discussions
+          - frontend-app-ecommerce
+          - frontend-app-enterprise-public-catalog
+          - frontend-app-gradebook
+          - frontend-app-learner-dashboard
+          - frontend-app-learner-record
+          - frontend-app-learning
+          - frontend-app-library-authoring
+          - frontend-app-ora-grading
+          - frontend-app-payment
+          - frontend-app-profile
+          - frontend-app-program-console
+          - frontend-app-support-tools
+          - frontend-component-footer
+          - frontend-component-header
+          - frontend-lib-content-components
+          - frontend-lib-special-exams
+          - paragon
+          - studio-frontend
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    needs: [setup-branch, python-translations]
+    steps:
+      # Clones the openedx-translations repo
+      - name: clone openedx/openedx-translations
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.setup-branch.outputs.branch }}
+
+      # Clones the  repository
+      - name: clone openedx/${{ matrix.repo }}
+        uses: actions/checkout@v3
+        with:
+          repository: openedx/${{ matrix.repo }}
+          path: translations/${{ matrix.repo }}
+
+      # Sets up node/npm
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Extracts the translation source files
+      - name: extract translation source files
+        run: |
+          cd translations/${{ matrix.repo }}
+          make extract_translations
+      # git adds only the translation source files, found in src/i18n/transifex_input.json
+      - name: git add the translation source files
+        id: add-sources
+        run: |
+          # set identity
+          git config --global user.email "translations-bot@openedx.org"
+          git config --global user.name "edx-transifex-bot"
+          # Change directory to translations/${{ matrix.repo }}
+          cd translations/${{ matrix.repo }}
+          # remove translations/${{ matrix.repo }}/.git so we don't commit a submodule
+          rm -rf .git
+          # find transifex_input.json
+          TRANSIFEX_JSON_PATH=$(find . -name 'transifex_input.json')
+          # stage the transifex_input.json file generated by make
+          git add $TRANSIFEX_JSON_PATH -f -v
+          # Check the git status of the translation source files
+          echo "GIT_STATUS=$(git status $TRANSIFEX_JSON_PATH -s | wc -l)" >> $GITHUB_ENV
+      # Attempts to commit the translation source files if there is a difference
+      - name: git commit the translation source files
+        if: "${{ env.GIT_STATUS > 0 }}"
+        run: |
+          # commit the changes
+          git commit -m "chore: add extracted translation source files from ${{ matrix.repo }}"
+          # push changes to branch
+          git push
+
+  merge-translations:
+    runs-on: ubuntu-latest
+    needs: [setup-branch, python-translations, js-translations]
+
+    steps:
+      # Clones the openedx-translations repo on the automated/extract-translation-source-files-# branch
+      - name: clone openedx/openedx-translations
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.setup-branch.outputs.branch }}
+          fetch-depth: 0
+
+      # Create a pull request
+      - name: create pull request
+        id: createPR
+        env:
+          # This token requires Write access to the openedx-translations repo
+          GITHUB_TOKEN: ${{ secrets.EDX_TRANSIFEX_BOT_GITHUB_TOKEN }}
+        run: |
+          echo "COMMIT_COUNT=$(git rev-list HEAD ^origin/main | wc -l)" >> $GITHUB_ENV
+          echo "PR_URL=$(gh pr create --title 'chore: add updated translation source files' --body 'This PR is auto-generated by [extract-translation-source-files](https://github.com/openedx/openedx-translations/blob/master/.github/workflows/extract-translation-source-files.yml).')" >> $GITHUB_ENV
+
+      # Merges the pull request
+      - name: merge pull request
+        id: mergePR
+        env:
+          # This token requires Write access to the openedx-translations repo
+          GITHUB_TOKEN: ${{ secrets.EDX_TRANSIFEX_BOT_GITHUB_TOKEN }}
+        if: "${{ env.COMMIT_COUNT > 0 }}"
+        run: gh pr merge ${{ env.PR_URL }} --merge --auto
+
+      # Notify that branch did not merge because there were no new commits in the branch
+      # and delete the branch now that it is unnecessary
+      - name: notify of empty branch and delete branch
+        if: (steps.mergePR.outcome == 'skipped')
+        run: |
+          echo "The branch was not merged because the branch had 0 commits."
+          git push origin -d ${{ needs.setup-branch.outputs.branch }}
