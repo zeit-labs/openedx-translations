@@ -40,7 +40,7 @@ jobs:
         repo:
           - repo_name: edx-platform
     runs-on: ubuntu-latest
-    continue-on-error: true
+#    continue-on-error: true
     needs: [setup-branch]
 
     steps:
@@ -73,6 +73,7 @@ jobs:
           pip install -r requirements/translations.txt
           pip install enmerkar-underscore
           pip install mako
+          pip install pybabel
           pip install openedx-django-wiki==2.0.0
           pip install edx-proctoring-proctortrack
 
