@@ -127,10 +127,9 @@ jobs:
             requirements/translations.txt
             translations/edx-platf*rm/requirements/edx/base.txt
 
-
       # Installs Python requirements from translations.txt
       - name: install requirements
-        if: !steps.setup_python.outputs.cache-hit
+        if: ${{ !steps.setup_python.outputs.cache-hit }}
         run: |
           # Install requirements for all packages
           pip install -r requirements/translations.txt
