@@ -152,6 +152,9 @@ jobs:
           # */*/conf/locale/en
           EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
           echo "EN_DIR=$EN_DIR" >> $GITHUB_ENV
+          echo "debug"
+          echo "$GITHUB_ENV"
+          cat "$GITHUB_ENV"
           # If the directory is not found, exit with an error. This can happen if we add a repository that doesn't
           # comply with OEP-58, or it still doesn't have any translations yet
           if [ -z "$EN_DIR" ]; then
