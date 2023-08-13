@@ -179,7 +179,7 @@ jobs:
       - name: add edx-platform translation source files openedx-translations
         if: matrix.repo.repo_name == 'edx-platform'
         run: |
-          git add -f -v $EN_DIR/*.po
+          git add -f -v $(find $EN_DIR -name '*.po')
           # Check the git statuses of the translation source files
           echo "GIT_STATUS=$(git status conf/locale/en -s | wc -l)" >> $GITHUB_ENV
 
