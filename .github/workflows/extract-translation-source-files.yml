@@ -104,11 +104,23 @@ jobs:
           repository: openedx/${{ matrix.repo.repo_name }}
           path: translations/${{ matrix.repo.repo_name }}
 
-      # Sets up Python
-      - name: setup python
+      - name: setup python for edx-platform
         uses: actions/setup-python@v4
+        if: matrix.repo.repo_name == 'edx-platform'
         with:
           python-version: '3.8'
+          cache: pip
+          cache-dependency-path: |
+            requirements/translations.txt
+            translations/edx-platf*rm/requirements/edx/base.txt
+
+      - name: setup python for other repos
+        uses: actions/setup-python@v4
+        if: matrix.repo.repo_name != 'edx-platform'
+        with:
+          python-version: '3.8'
+          cache: pip
+          cache-dependency-path: 'requirements/translations.txt'
 
       # Installs Python requirements from translations.txt
       - name: install requirements
