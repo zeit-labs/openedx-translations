@@ -129,7 +129,6 @@ jobs:
 
       # Installs Python requirements from translations.txt
       - name: install requirements
-        if: ${{ !steps.setup_python.outputs.cache-hit }}
         run: |
           # Install requirements for all packages
           pip install -r requirements/translations.txt
