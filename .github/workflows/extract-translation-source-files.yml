@@ -63,6 +63,7 @@ jobs:
 #            python_module_name: recommender
           - repo_name: xblock-drag-and-drop-v2
             python_module_name: drag_and_drop_v2
+            branch_name: shadinaif/testing-special-xblock-support
 #          - repo_name: xblock-free-text-response
 #            python_module_name: freetextresponse
 #          - repo_name: xblock-google-drive
@@ -100,6 +101,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo.repo_name }}
+          # Use matrix.repo.branch_name if exists, otherwise use default branch
+          ref: ${{ matrix.repo.branch_name || github.ref }}
           path: translations/${{ matrix.repo.repo_name }}
 
       # Sets up Python
@@ -149,6 +152,20 @@ jobs:
           # extract_translations into EN_DIR and adds them
           DJANGO_PATH=$(find $EN_DIR -name 'django.po')
           DJANGOJS_PATH=$(find $EN_DIR -name 'djangojs.po')
+          ############## Special support for XBlocks
+          # if both files are not found, then it can be an XBlock (thus, text.po and textjs.po files)
+          if [ -z "$DJANGO_PATH" ] && [ -z "$DJANGOJS_PATH" ]; then
+            DJANGO_PATH=$(find $EN_DIR -name 'text.po')
+            DJANGOJS_PATH=$(find $EN_DIR -name 'textjs.po')
+            # Rename the files to django.po and djangojs.po, if exists
+            if [ ! -z "$DJANGO_PATH" ]; then
+              mv $DJANGO_PATH $(dirname $DJANGO_PATH)/django.po
+            fi
+            if [ ! -z "$DJANGOJS_PATH" ]; then
+              mv $DJANGOJS_PATH $(dirname $DJANGOJS_PATH)/djangojs.po
+            fi
+          fi
+          ############## End of - Special support for XBlocks
           # use (-f) to force add the files even if they are ignored in the source repo
           git add $DJANGO_PATH $DJANGOJS_PATH -f -v
           # Check the git statuses of the translation source files
