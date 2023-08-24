@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
     steps:
       # Clones the openedx-translations repo
-      - name: clone openedx/openedx-translations
+      - name: clone Zeit-Labs/openedx-translations
         uses: actions/checkout@v3
 
       - name: Install gettext
