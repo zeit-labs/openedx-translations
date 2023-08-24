@@ -63,6 +63,7 @@ jobs:
 #            python_module_name: recommender
           - repo_name: xblock-drag-and-drop-v2
             python_module_name: drag_and_drop_v2
+            branch_name: shadinaif/testing-special-xblock-support
 #          - repo_name: xblock-free-text-response
 #            python_module_name: freetextresponse
 #          - repo_name: xblock-google-drive
@@ -100,6 +101,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo.repo_name }}
+          # Use matrix.repo.branch_name if exists, otherwise use default branch
+          ref: ${{ matrix.repo.branch_name || github.ref }}
           path: translations/${{ matrix.repo.repo_name }}
 
       # Sets up Python
