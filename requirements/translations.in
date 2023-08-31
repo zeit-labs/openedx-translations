@@ -1,4 +1,5 @@
 -c constraints.txt
 
 # i18n
-edx-i18n-tools
+#edx-i18n-tools
+-e git+https://github.com/Zeit-Labs/i18n-tools.git@d81cbdcbd8fa66bdf340ad7898a4505111c64661#egg=edx-i18n-tools
