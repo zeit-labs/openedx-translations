@@ -118,6 +118,7 @@ jobs:
       # Extracts the translation source files
       - name: extract translation source files
         run: |
+          pip list
           cd translations/${{ matrix.repo.repo_name }}
           make extract_translations
 
