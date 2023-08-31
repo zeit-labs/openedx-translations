@@ -10,7 +10,7 @@ django==3.2.20
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   edx-i18n-tools
-edx-i18n-tools==1.1.0
+git+https://github.com/Zeit-Labs/i18n-tools.git@464ab07cc502ac87e53cba7ef4934073c0274583#egg=edx-i18n-tools
     # via -r requirements/translations.in
 path==16.7.1
     # via edx-i18n-tools
