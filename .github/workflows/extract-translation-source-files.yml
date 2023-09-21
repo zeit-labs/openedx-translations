@@ -51,7 +51,7 @@ jobs:
 #          - edx-proctoring
 #          - FeedbackXBlock
 #          - RecommenderXBlock
-#          - xblock-drag-and-drop-v2
+          - xblock-drag-and-drop-v2
 #          - xblock-free-text-response
 #          - xblock-google-drive
 #          - xblock-image-explorer
