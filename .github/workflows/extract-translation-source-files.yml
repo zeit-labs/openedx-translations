@@ -48,9 +48,10 @@ jobs:
 #          - edx-ace
 #          - edx-bulk-grades
 #          - edx-ora2
+          - edx-platform
 #          - edx-proctoring
 #          - FeedbackXBlock
-          - RecommenderXBlock
+#          - RecommenderXBlock
 #         - xblock-drag-and-drop-v2
 #          - xblock-free-text-response
 #          - xblock-google-drive
@@ -80,7 +81,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo }}
-          ref: shadinaif/FC-0012-OEP-58.05
+          ref: shadinaif/FC-0012-OEP-58.no-segment
           path: translations/${{ matrix.repo }}
 
       # Sets up Python
