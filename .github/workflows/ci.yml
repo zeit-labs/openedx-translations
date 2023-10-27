@@ -91,8 +91,8 @@ jobs:
             await github.rest.repos.createCommitStatus({
               context: 'validate-po-files',
               description: 'ci.yml: Set fix commit status to success',
-              owner: context.repository.owner,
-              repo: context.repository.owner,
+              owner: context.repo.owner,
+              repo: context.repo.owner,
               sha: '${{ steps.commit_fixes.outputs.FUZZY_FIX_COMMIT_SHA }}',
               state: 'success',
             })
