@@ -35,9 +35,7 @@ combined into one single workflow with multiple jobs:
       excluded from ``.mo`` files
    #. Revalidate the files
 
-#. Commit the updated entries
-#. Run ``commitlint``
-#. Push updated entries to the PR branch
+#. Commit the updated entries and push to the PR branch
 #. Automatically merge the PR
 
 

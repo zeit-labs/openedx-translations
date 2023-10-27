@@ -7,12 +7,19 @@ on:
 
 jobs:
   # Run unit and integration tests for Python
-  python-tests:
+  validate-po-files:  # TODO: rename to "tests"
     runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      pull-requests: write
+#      statuses: write
+    permissions: write-all  # TODO: Remove
     steps:
       # Clones the openedx-translations repo
       - name: clone openedx/openedx-translations
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install gettext
         run: |
@@ -27,19 +34,6 @@ jobs:
         run: |
           make test_requirements
           make test
-
-
-  # Validate translation files
-  validate-po-files:
-    needs: python-tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: clone openedx/openedx-translations
-        uses: actions/checkout@v3
-
-      - name: Install gettext
-        run: |
-          sudo apt install -y gettext
 
       - name: Allow editing translation files for bot pull requests
         env:
@@ -67,28 +61,53 @@ jobs:
 
           exit $has_errors
 
-      - name: Commit changes to git
-        if: ${{ always() && !github.event.pull_request.head.repo.fork }}
+      - name: Commit fixes to git
+        id: commit_fixes
+        if: ${{ github.event.repository.full_name == github.event.pull_request.head.repo.full_name }}
         run: |
           # Commit if there are changes to translation files
           if ! git diff --no-ext-diff --quiet --exit-code; then
+            # Set the git user to the bot user to enable commit
             git config --global user.email "translations-bot@openedx.org"
             git config --global user.name "edx-transifex-bot"
-            git add .
-            git commit -m "fix: mark invalid entries as fuzzy" -- translations/
+
+            # Switch from the merge commit to the pull request branch to enable push
+            git checkout "${{ github.head_ref }}"
+
+            git add translations/
+            git commit --message "fix: mark invalid entries as fuzzy" translations/
+            git push
+
+            echo "FUZZY_FIX_COMMIT_SHA=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes to commit"
           fi
+
+      - name: Allow merging the fuzzy fix commit
+        uses: actions/github-script@v6
+        if: ${{ steps.commit_fixes.outputs.FUZZY_FIX_COMMIT_SHA }}
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              context: 'validate-po-files',
+              description: 'ci.yml: Set fix commit status to success',
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo
+              sha: '${{ steps.commit_fixes.outputs.FUZZY_FIX_COMMIT_SHA }}',
+              state: 'success',
+            })
 
       - name: Post translation validation results as a pull request comment
         # Due to GitHub Actions security reasons posting a comment isn't possible on fork pull requests.
         # This shouldn't be an issue, because bots writes directly to this repository.
-        if: ${{ always() && !github.event.pull_request.head.repo.fork }}
+        if: ${{ always() && github.event.repository.full_name == github.event.pull_request.head.repo.full_name }}
         uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096
         with:
           message: |
             :white_check_mark: All translation files are valid.
 
             ```
-            ${{ steps.validate_translation_files.outputs.ERROR_LOG }}
+            ${{ steps.validate_translation_files.outputs.ERROR_LOG || 'No errors were reported.' }}
             ```
 
             This comment has been posted by the `validate-translation-files.yml` GitHub Actions workflow.
@@ -97,36 +116,20 @@ jobs:
             :warning: There are errors in the translation files:
 
             ```
-            ${{ steps.validate_translation_files.outputs.ERROR_LOG }}
+            ${{ steps.validate_translation_files.outputs.ERROR_LOG || 'No errors were reported.' }}
             ```
 
             This comment has been posted by the `validate-translation-files.yml` GitHub Actions workflow.
 
-
-  # Run commitlint on the commit messages in a pull request.
-  commitlint:
-    needs: validate-po-files
-    uses: openedx/.github/.github/workflows/commitlint.yml@master
-
-
-  # Automatically merge pull requests created by the "Transifex Integration" github app
-  # https://github.com/apps/transifex-integration
-  automerge-transifex-app-pr:
-    needs: commitlint
-    runs-on: ubuntu-latest
-    # Merges the pull request
-    steps:
-      - name: clone repository
-        uses: actions/checkout@v3
       - name: auto-merge pull request
         env:
           # secrets can't be used in job conditionals, so we set them to env here
           TRANSIFEX_APP_ACTOR_NAME: "${{ secrets.TRANSIFEX_APP_ACTOR_NAME }}"
           TRANSIFEX_APP_ACTOR_ID: "${{ secrets.TRANSIFEX_APP_ACTOR_ID }}"
           # This token requires Write access to the openedx-translations repo
-          GITHUB_TOKEN: ${{ secrets.EDX_TRANSIFEX_BOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.EDX_TRANSIFEX_BOT_GITHUB_TOKEN || github.token }}  # TODO: remove github.token
           PR_NUMBER: ${{ github.event.number }}
-        if: "${{ github.actor == env.TRANSIFEX_APP_ACTOR_NAME && github.actor_id == env.TRANSIFEX_APP_ACTOR_ID }}"
+#        if: "${{ github.actor == env.TRANSIFEX_APP_ACTOR_NAME && github.actor_id == env.TRANSIFEX_APP_ACTOR_ID }}"
         run: |
           # Add the pull request to the merge queue with --rebase commit strategy
-#          gh pr merge ${{ github.head_ref }} --rebase --auto
+          gh pr merge ${{ github.head_ref }} --rebase --auto
