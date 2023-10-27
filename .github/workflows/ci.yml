@@ -46,7 +46,7 @@ jobs:
           # secrets can't be used in job conditionals, so we set them to env here
           TRANSIFEX_APP_ACTOR_NAME: "${{ secrets.TRANSIFEX_APP_ACTOR_NAME }}"
           TRANSIFEX_APP_ACTOR_ID: "${{ secrets.TRANSIFEX_APP_ACTOR_ID }}"
-        if: "${{ github.actor == env.TRANSIFEX_APP_ACTOR_NAME && github.actor_id == env.TRANSIFEX_APP_ACTOR_ID }}"
+#        if: "${{ github.actor == env.TRANSIFEX_APP_ACTOR_NAME && github.actor_id == env.TRANSIFEX_APP_ACTOR_ID }}"
         run: |
           echo "VALIDATION_OPTIONS=--mark-fuzzy" >> "$GITHUB_ENV"
 
@@ -129,4 +129,4 @@ jobs:
         if: "${{ github.actor == env.TRANSIFEX_APP_ACTOR_NAME && github.actor_id == env.TRANSIFEX_APP_ACTOR_ID }}"
         run: |
           # Add the pull request to the merge queue with --rebase commit strategy
-          gh pr merge ${{ github.head_ref }} --rebase --auto
+#          gh pr merge ${{ github.head_ref }} --rebase --auto
