@@ -92,7 +92,7 @@ jobs:
               context: 'validate-po-files',
               description: 'ci.yml: Set fix commit status to success',
               owner: context.repo.owner,
-              repo: context.repo.owner,
+              repo: context.repo.repo,
               sha: '${{ steps.commit_fixes.outputs.FUZZY_FIX_COMMIT_SHA }}',
               state: 'success',
             })
