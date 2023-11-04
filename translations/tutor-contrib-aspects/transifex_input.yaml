@@ -119,10 +119,38 @@ en:
   : A count of the number of enrollments and un-enrollments per day. Learners can
     enroll and unenroll multiple times, in this chart each individual enrollment and
     unenrollment will be counted.
+  Action Cluster: Action Cluster
+  Active Users: Active Users
+  Active Users Over Time: Active Users Over Time
   Active Users Per Organization: Active Users Per Organization
   Actor IDs over time: Actor IDs over time
   Answers Chosen: Answers Chosen
+  Chart Count: Chart Count
+  Chart showing the number of Superset actions taken by each user over the selected time period.: Chart
+    showing the number of Superset actions taken by each user over the selected time
+    period.
+  Chart showing the number of Superset actions taken on each chart in the selected time period.: Chart
+    showing the number of Superset actions taken on each chart in the selected time
+    period.
+  Chart showing the number of Superset actions taken on each dashboard in the selected time period.: Chart
+    showing the number of Superset actions taken on each dashboard in the selected
+    time period.
+  Chart showing the number of registered users over the selected time period.: Chart
+    showing the number of registered users over the selected time period.
+  Charts by Type: Charts by Type
   ClickHouse: ClickHouse
+  ClickHouse metrics: ClickHouse metrics
+  Count of charts created in Superset over the selected time period.: Count of charts
+    created in Superset over the selected time period.
+  Count of dashboards created in Superset over the selected time period.: Count of
+    dashboards created in Superset over the selected time period.
+  Count of the various types of charts created in Superset over the selected time period.: Count
+    of the various types of charts created in Superset over the selected time period.
+  Count of unique users who performed an action in Superset over the selected time period.: Count
+    of unique users who performed an action in Superset over the selected time period.
+  Count over time of unique users who performed an action in Superset over the selected time period.: Count
+    over time of unique users who performed an action in Superset over the selected
+    time period.
   Course: Course
   Course Enrollment: Course Enrollment
   Course Enrollments Over Time: Course Enrollments Over Time
@@ -135,6 +163,7 @@ en:
   Courses: Courses
   Courses Per Organization: Courses Per Organization
   Currently Enrolled Learners Per Day: Currently Enrolled Learners Per Day
+  Dashboard Count: Dashboard Count
   Distinct forum users: Distinct forum users
   Distribution Of Attempts: Distribution Of Attempts
   Distribution Of Hints Per Correct Answer: Distribution Of Hints Per Correct Answer
@@ -154,6 +183,8 @@ en:
   Last Received Event: Last Received Event
   Last course syncronized: Last course syncronized
   Most Active Courses Per Day: Most Active Courses Per Day
+  Most-used Charts: Most-used Charts
+  Most-used Dashboards: Most-used Dashboards
   Number Of Attempts To Find Correct Answer: Number Of Attempts To Find Correct Answer
   Number Of Students: Number Of Students
   Number Of Viewers / Views: Number Of Viewers / Views
@@ -169,11 +200,13 @@ en:
   Problem Performance: Problem Performance
   Problem name: Problem name
   Question Title: Question Title
+  Registered Users Over Time: Registered Users Over Time
   Responses: Responses
   Responses Per Problem: Responses Per Problem
   Seconds Of Video: Seconds Of Video
   Slowest ClickHouse Queries: Slowest ClickHouse Queries
   Students: Students
+  Superset: Superset
   ? The cumulative total of unique enrolled learners based on their enrollment state
     at the end of each day. If a learner was enrolled previously, but has left the
     course since, they are not counted as of the date they left. If they re-enroll
@@ -239,10 +272,13 @@ en:
     Each segment represents 5 seconds of the video.
   : This chart shows which parts of a video are most watched, and which are most re-watched.
     Each segment represents 5 seconds of the video.
+  Time Grain: Time Grain
+  Time Range: Time Range
   Time range: Time range
   Total Organizations: Total Organizations
   Transcripts / Captions Per Video: Transcripts / Captions Per Video
   Unique actors: Unique actors
+  User Actions: User Actions
   Video Engagement: Video Engagement
   Video Performance: Video Performance
   Video Title: Video Title
