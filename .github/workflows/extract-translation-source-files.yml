@@ -20,10 +20,10 @@ jobs:
           script: |
             // Need to use a workaround until https://github.com/actions/toolkit/issues/1576 is fixed
             // const selectedRepo = core.getInput('repo');
-            const selectedRepo = ${{ toJSON(github.event.inputs.repo) }};
+            const selectedRepo = ${{ toJSON('edx-enterprise') }};
 
             const allPythonRepos = [
-              'edx-platform',
+              'edx-enterprise',
               // 'AudioXBlock',
               // 'completion',
               // 'course-discovery',
@@ -331,7 +331,7 @@ jobs:
   # a transifex_input.yaml file in the root of the site.
   generic-translations:
     if: ${{ !cancelled() && fromJson(needs.setup-matrix.outputs.has_generic_repos) == true }}
-    needs: [setup-branch, setup-matrix, js-translations]
+    needs: [setup-branch, setup-matrix]  #, js-translations]
     strategy:
       # using max-parallel to avoid git push/pull issues when running in parallel
       max-parallel: 1
