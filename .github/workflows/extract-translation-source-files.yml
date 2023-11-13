@@ -21,16 +21,17 @@ jobs:
             // Need to use a workaround until https://github.com/actions/toolkit/issues/1576 is fixed
             // const selectedRepo = core.getInput('repo');
             // const selectedRepo = ${{ toJSON(github.event.inputs.repo) }};
-            const selectedRepo = ${{ toJSON('edx-platform') }};
+            const selectedRepo = ${{ toJSON('ecommerce') }};
 
             const allPythonRepos = [
-              'edx-platform',
+              // 'edx-platform',
               // 'AudioXBlock',
               // 'completion',
               // 'course-discovery',
               // 'credentials',
               // 'credentials-themes',
               // 'DoneXBlock',
+              'ecommerce',
               // 'edx-ace',
               // 'edx-bulk-grades',
               // 'edx-ora2',
@@ -176,7 +177,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Zeit-Labs/${{ matrix.repo }}
-          ref: shadinaif/FC-0012-OEP-58.no-segment
+          ref: shadinaif/FC-0012-OEP-58
           path: translations/${{ matrix.repo }}
 
       - name: prepare the environment with edx-platform specific changes
