@@ -23,27 +23,28 @@ jobs:
             const selectedRepo = ${{ toJSON(github.event.inputs.repo) }} ?? '';
 
             const allPythonRepos = [
-              'AudioXBlock',
-              'completion',
-              'course-discovery',
-              'credentials',
-              'credentials-themes',
-              'DoneXBlock',
-              'edx-ace',
-              'edx-bulk-grades',
-              'edx-ora2',
-              'edx-proctoring',
-              'FeedbackXBlock',
-              'RecommenderXBlock',
-              'xblock-drag-and-drop-v2',
-              'xblock-free-text-response',
-              'xblock-google-drive',
-              'xblock-image-explorer',
-              'xblock-image-modal',
-              'xblock-lti-consumer',
-              'xblock-qualtrics-survey',
-              'xblock-sql-grader',
-              'xblock-submit-and-compare',
+             // 'AudioXBlock',
+             // 'completion',
+             // 'course-discovery',
+             // 'credentials',
+             // 'credentials-themes',
+             // 'DoneXBlock',
+              'ecommerce',
+             // 'edx-ace',
+             // 'edx-bulk-grades',
+             // 'edx-ora2',
+             // 'edx-proctoring',
+             // 'FeedbackXBlock',
+             // 'RecommenderXBlock',
+             // 'xblock-drag-and-drop-v2',
+             // 'xblock-free-text-response',
+             // 'xblock-google-drive',
+             // 'xblock-image-explorer',
+             // 'xblock-image-modal',
+             // 'xblock-lti-consumer',
+             // 'xblock-qualtrics-survey',
+             // 'xblock-sql-grader',
+             // 'xblock-submit-and-compare',
             ];
 
             const allJavascriptRepos = [
@@ -173,7 +174,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ZeitLabs/${{ matrix.repo }}
+          ref: shadinaif/FC-0012-OEP-58
           path: translations/${{ matrix.repo }}
+
+      - name: Avoid committing translations into the `openedx-translations` other than source
+        run: |
+          find translations/${{ matrix.repo }}/conf/locale -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
+          mkdir -p translations/${{ matrix.repo }}/conf/locale/en/LC_MESSAGES
 
       # Sets up Python
       - name: setup python
