@@ -21,16 +21,17 @@ jobs:
             // Need to use a workaround until https://github.com/actions/toolkit/issues/1576 is fixed
             // const selectedRepo = core.getInput('repo');
             // const selectedRepo = ${{ toJSON(github.event.inputs.repo) }};
-            const selectedRepo = ${{ toJSON('edx-platform') }};
+            const selectedRepo = ${{ toJSON('ecommerce') }};
 
             const allPythonRepos = [
-              'edx-platform',
+              // 'edx-platform',
               // 'AudioXBlock',
               // 'completion',
               // 'course-discovery',
               // 'credentials',
               // 'credentials-themes',
               // 'DoneXBlock',
+              'ecommerce',
               // 'edx-ace',
               // 'edx-bulk-grades',
               // 'edx-ora2',
