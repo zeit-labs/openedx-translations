@@ -177,11 +177,6 @@ jobs:
           ref: shadinaif/FC-0012-OEP-58
           path: translations/${{ matrix.repo }}
 
-      - name: Avoid committing translations into the `openedx-translations` other than source
-        run: |
-          find translations/${{ matrix.repo }}/conf/locale -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
-          mkdir -p translations/${{ matrix.repo }}/conf/locale/en/LC_MESSAGES
-
       # Sets up Python
       - name: setup python
         uses: actions/setup-python@v4
