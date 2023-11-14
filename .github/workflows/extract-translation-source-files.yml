@@ -23,27 +23,28 @@ jobs:
             const selectedRepo = ${{ toJSON(github.event.inputs.repo) }} ?? '';
 
             const allPythonRepos = [
-              'AudioXBlock',
-              'completion',
-              'course-discovery',
-              'credentials',
-              'credentials-themes',
-              'DoneXBlock',
-              'edx-ace',
-              'edx-bulk-grades',
-              'edx-ora2',
-              'edx-proctoring',
-              'FeedbackXBlock',
-              'RecommenderXBlock',
-              'xblock-drag-and-drop-v2',
-              'xblock-free-text-response',
-              'xblock-google-drive',
-              'xblock-image-explorer',
-              'xblock-image-modal',
-              'xblock-lti-consumer',
-              'xblock-qualtrics-survey',
-              'xblock-sql-grader',
-              'xblock-submit-and-compare',
+             // 'AudioXBlock',
+             // 'completion',
+             // 'course-discovery',
+             // 'credentials',
+             // 'credentials-themes',
+             // 'DoneXBlock',
+              'ecommerce',
+             // 'edx-ace',
+             // 'edx-bulk-grades',
+             // 'edx-ora2',
+             // 'edx-proctoring',
+             // 'FeedbackXBlock',
+             // 'RecommenderXBlock',
+             // 'xblock-drag-and-drop-v2',
+             // 'xblock-free-text-response',
+             // 'xblock-google-drive',
+             // 'xblock-image-explorer',
+             // 'xblock-image-modal',
+             // 'xblock-lti-consumer',
+             // 'xblock-qualtrics-survey',
+             // 'xblock-sql-grader',
+             // 'xblock-submit-and-compare',
             ];
 
             const allJavascriptRepos = [
@@ -209,7 +210,8 @@ jobs:
           cd translations/${{ matrix.repo }}
           # finds the directory containing the english locale usually located in
           # */*/conf/locale/en
-          EN_DIR=$(find . -type d -regex ".+conf\/locale\/en$")
+          # but also exclude any hidden directories that might exist for some reason
+          EN_DIR=$(find . -type d -name '.*' -prune -o -type d -regex ".+conf\/locale\/en$")
           # If the directory is not found, exit with an error. This can happen if we add a repository that doesn't
           # comply with OEP-58, or it still doesn't have any translations yet
           if [ -z "$EN_DIR" ]; then
