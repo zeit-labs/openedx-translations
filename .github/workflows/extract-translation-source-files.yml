@@ -180,10 +180,10 @@ jobs:
 
       # Clones the  repository
       - name: clone Zeit-Labs/${{ matrix.repo }}
-        ref: fe-test
         uses: actions/checkout@v3
         with:
-          repository: openedx/${{ matrix.repo }}
+          repository: Zeit-Labs/${{ matrix.repo }}
+          ref: fe-test
           path: translations/${{ matrix.repo }}
 
       - name: prepare the environment with edx-platform specific changes
