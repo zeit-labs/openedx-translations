@@ -1780,6 +1780,26 @@ msgstr ""
 msgid "Record has already been submitted for configuration."
 msgstr ""
 
+#: enterprise/models.py:4214
+msgid "Specifies enterprise group name."
+msgstr ""
+
+#: enterprise/models.py:4227
+msgid "Enterprise Group"
+msgstr ""
+
+#: enterprise/models.py:4228
+msgid "Enterprise Groups"
+msgstr ""
+
+#: enterprise/models.py:4264
+msgid "Enterprise Group Membership"
+msgstr ""
+
+#: enterprise/models.py:4265
+msgid "Enterprise Group Memberships"
+msgstr ""
+
 #: enterprise/templates/enterprise/_data_sharing_decline_modal.html:7
 #: enterprise/views.py:1612 enterprise/views.py:2114
 msgid "Close"
