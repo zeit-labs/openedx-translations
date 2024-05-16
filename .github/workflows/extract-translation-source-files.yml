@@ -421,11 +421,13 @@ jobs:
       - name: install requirements
         run: pip install -r requirements/translations.txt
 
-      # Optional step if the repository has additional requirements
       - name: install requirements from the repository
         run: |
+          # If the repository has additional requirements, install them
           cd translations/${{ matrix.repository_config.repo }}
-          test -f translation_requirements.txt && pip install -r translation_requirements.txt
+          if make --just-print translation_requirements; then
+            make translation_requirements;
+          fi
 
       # Extracts the translation source files
       - name: extract translation source files
