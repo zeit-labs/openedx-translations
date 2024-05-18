@@ -94,11 +94,12 @@ jobs:
             const allGenericRepos = [
               {
                 repo: 'tutor-contrib-aspects',
-                transifex_file_path: 'transifex_input.yaml'
+                transifex_file_path: 'transifex_input.yaml',
               },
               {
                 repo: 'openedx-app-ios',
-                transifex_file_path: 'I18N/en.lproj/Localizable.strings'
+                transifex_file_path: 'I18N/en.lproj/Localizable.strings',
+                before_extract: 'make translation_requirements',
               },
             ]
 
@@ -421,13 +422,12 @@ jobs:
       - name: install requirements
         run: pip install -r requirements/translations.txt
 
-      - name: install requirements from the repository
+      - name: run optional pre-extraction step
+        if: "${{ matrix.repository_config.before_extract }}"
         run: |
-          # If the repository has additional requirements, install them
+          # If the repository has additional requirements or processing steps run them
           cd translations/${{ matrix.repository_config.repo }}
-          if make --just-print translation_requirements; then
-            make translation_requirements;
-          fi
+          ${{ matrix.repository_config.before_extract }}
 
       # Extracts the translation source files
       - name: extract translation source files
