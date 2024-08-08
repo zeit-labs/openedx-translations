@@ -28,7 +28,7 @@ msgstr ""
 "#-#-#-#-#  underscore.po (PROJECT VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-29 00:34+0000\n"
+"POT-Creation-Date: 2024-08-08 01:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,8 +63,8 @@ msgstr ""
 #: cms/static/js/views/list_item_editor.js:41
 #: cms/static/js/views/modals/edit_xblock.js:189 cms/static/js/views/tabs.js:86
 #: cms/static/js/views/tabs.js:118
-#: cms/static/js/views/utils/xblock_utils.js:287
-#: cms/static/js/views/utils/xblock_utils.js:302
+#: cms/static/js/views/utils/xblock_utils.js:284
+#: cms/static/js/views/utils/xblock_utils.js:299
 #: lms/static/js/ccx/schedule.js:256 lms/static/js/views/fields.js:72
 msgid "Saving"
 msgstr ""
@@ -141,9 +141,9 @@ msgstr ""
 #: cms/templates/js/content-group-editor.underscore:37
 #: cms/templates/js/content-group-editor.underscore:41
 #: cms/templates/js/course-instructor-details.underscore:41
-#: cms/templates/js/course-outline.underscore:230
-#: cms/templates/js/course-outline.underscore:256
-#: cms/templates/js/course-outline.underscore:258
+#: cms/templates/js/course-outline.underscore:215
+#: cms/templates/js/course-outline.underscore:241
+#: cms/templates/js/course-outline.underscore:243
 #: cms/templates/js/course-settings-learning-fields.underscore:4
 #: cms/templates/js/course_grade_policy.underscore:80
 #: cms/templates/js/course_info_update.underscore:21
@@ -167,7 +167,7 @@ msgstr ""
 #: cms/static/js/views/course_info_update.js:249
 #: cms/static/js/views/list_item.js:63 cms/static/js/views/show_textbook.js:43
 #: cms/static/js/views/tabs.js:174
-#: cms/static/js/views/utils/xblock_utils.js:216
+#: cms/static/js/views/utils/xblock_utils.js:213
 msgid "Deleting"
 msgstr ""
 
@@ -180,14 +180,14 @@ msgstr ""
 #: cms/static/js/views/export.js:360
 #: cms/static/js/views/manage_users_and_roles.js:33
 #: cms/static/js/views/modals/base_modal.js:136
-#: cms/static/js/views/modals/course_outline_modals.js:219
-#: cms/static/js/views/modals/course_outline_modals.js:260
+#: cms/static/js/views/modals/course_outline_modals.js:218
+#: cms/static/js/views/modals/course_outline_modals.js:259
 #: cms/static/js/views/show_textbook.js:53 cms/static/js/views/tabs.js:188
 #: cms/static/js/views/validation.js:127
 #: common/static/common/js/components/utils/view_utils.js:68
 #: lms/static/js/Markdown.Editor.js:1092
 #: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx:152
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:187
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:193
 #: xmodule/js/src/html/edit.js:320
 #: cms/templates/js/add-xblock-component-menu-problem.underscore:55
 #: cms/templates/js/add-xblock-component-menu.underscore:29
@@ -282,35 +282,35 @@ msgstr ""
 msgid "You have unsaved changes. Do you really want to leave this page?"
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:22
+#: cms/static/js/features/import/factories/import.js:20
 msgid "There was an error during the upload process."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:23
+#: cms/static/js/features/import/factories/import.js:21
 msgid "There was an error while unpacking the file."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:24
+#: cms/static/js/features/import/factories/import.js:22
 msgid "There was an error while verifying the file you submitted."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:33
+#: cms/static/js/features/import/factories/import.js:31
 msgid "Choose new file"
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:48
+#: cms/static/js/features/import/factories/import.js:46
 msgid "File format not supported. Please upload a file with a {ext} extension."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:56
+#: cms/static/js/features/import/factories/import.js:54
 msgid "There was an error while importing the new library to our database."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:58
+#: cms/static/js/features/import/factories/import.js:56
 msgid "There was an error while importing the new course to our database."
 msgstr ""
 
-#: cms/static/js/features/import/factories/import.js:121
+#: cms/static/js/features/import/factories/import.js:119
 msgid "Your import has failed."
 msgstr ""
 
@@ -509,10 +509,6 @@ msgstr ""
 msgid "This component has validation issues."
 msgstr ""
 
-#: cms/static/js/utils/copy_to_clipboard.js:23
-msgid "Copied"
-msgstr ""
-
 #: cms/static/js/views/active_video_upload.js:42
 #: cms/static/js/views/assets.js:213
 msgid "Your file could not be uploaded"
@@ -522,7 +518,6 @@ msgstr ""
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: cms/static/js/views/active_video_upload.js:46
-#: cms/static/js/views/modals/course_outline_modals.js:351
 #: cms/static/js/views/modals/edit_xblock.js:124
 #: cms/static/js/views/video_transcripts.js:325
 #: lms/static/js/demographics_collection/Wizard.jsx:82
@@ -653,7 +648,7 @@ msgid "Load Another File"
 msgstr ""
 
 #: cms/static/js/views/components/add_xblock.js:71
-#: cms/static/js/views/utils/xblock_utils.js:55
+#: cms/static/js/views/utils/xblock_utils.js:52
 msgid "Adding"
 msgstr ""
 
@@ -673,8 +668,8 @@ msgstr ""
 #: cms/static/js/views/course_outline.js:401
 #: cms/static/js/views/pages/container.js:311
 #: cms/static/js/views/pages/container.js:323 cms/static/js/views/tabs.js:164
-#: cms/static/js/views/utils/xblock_utils.js:101
-#: cms/static/js/views/utils/xblock_utils.js:113
+#: cms/static/js/views/utils/xblock_utils.js:98
+#: cms/static/js/views/utils/xblock_utils.js:110
 #: lms/static/js/Markdown.Editor.js:1091 xmodule/js/src/html/edit.js:885
 #: common/static/common/templates/discussion/templates.underscore:879
 #: lms/templates/learner_dashboard/verification_popover.underscore:13
@@ -683,7 +678,7 @@ msgstr ""
 
 #: cms/static/js/views/course_outline.js:234
 #: cms/static/js/views/pages/container.js:497
-#: cms/static/js/views/pages/container_subviews.js:187
+#: cms/static/js/views/pages/container_subviews.js:186
 msgid "Copying"
 msgstr ""
 
@@ -693,31 +688,31 @@ msgstr ""
 
 #: cms/static/js/views/course_outline.js:364
 #: cms/static/js/views/pages/container.js:285
-#: cms/static/js/views/utils/xblock_utils.js:79
+#: cms/static/js/views/utils/xblock_utils.js:76
 msgid "Pasting"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:384
 #: cms/static/js/views/pages/container.js:306
-#: cms/static/js/views/utils/xblock_utils.js:96
+#: cms/static/js/views/utils/xblock_utils.js:93
 msgid "Some errors occurred"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:386
 #: cms/static/js/views/pages/container.js:308
-#: cms/static/js/views/utils/xblock_utils.js:98
+#: cms/static/js/views/utils/xblock_utils.js:95
 msgid "The following required files could not be added to the course:"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:394
 #: cms/static/js/views/pages/container.js:316
-#: cms/static/js/views/utils/xblock_utils.js:106
+#: cms/static/js/views/utils/xblock_utils.js:103
 msgid "You may need to update a file(s) manually"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:397
 #: cms/static/js/views/pages/container.js:319
-#: cms/static/js/views/utils/xblock_utils.js:109
+#: cms/static/js/views/utils/xblock_utils.js:106
 msgid ""
 "The following files already exist in this course but don't match the version "
 "used by the component you pasted:"
@@ -725,25 +720,25 @@ msgstr ""
 
 #: cms/static/js/views/course_outline.js:406
 #: cms/static/js/views/pages/container.js:328
-#: cms/static/js/views/utils/xblock_utils.js:118
+#: cms/static/js/views/utils/xblock_utils.js:115
 msgid "New file(s) added to Files & Uploads."
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:408
 #: cms/static/js/views/pages/container.js:330
-#: cms/static/js/views/utils/xblock_utils.js:120
+#: cms/static/js/views/utils/xblock_utils.js:117
 msgid "The following required files were imported to this course:"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:413
 #: cms/static/js/views/pages/container.js:335
-#: cms/static/js/views/utils/xblock_utils.js:125
+#: cms/static/js/views/utils/xblock_utils.js:122
 msgid "View files"
 msgstr ""
 
 #: cms/static/js/views/course_outline.js:422
 #: cms/static/js/views/pages/container.js:344
-#: cms/static/js/views/utils/xblock_utils.js:134
+#: cms/static/js/views/utils/xblock_utils.js:131
 msgid "Dismiss"
 msgstr ""
 
@@ -1048,7 +1043,7 @@ msgid "Return to team listing"
 msgstr ""
 
 #: cms/static/js/views/manage_users_and_roles.js:30
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:125
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:131
 msgid "Are you sure?"
 msgstr ""
 
@@ -1064,7 +1059,7 @@ msgstr ""
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: cms/static/js/views/modals/base_modal.js:45
-#: cms/static/js/views/modals/course_outline_modals.js:259
+#: cms/static/js/views/modals/course_outline_modals.js:258
 #: xmodule/js/src/html/edit.js:1040
 #: cms/templates/js/certificate-editor.underscore:46
 #: cms/templates/js/content-group-editor.underscore:31
@@ -1081,72 +1076,60 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:124
+#: cms/static/js/views/modals/course_outline_modals.js:123
 msgid "{display_name} Settings"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:205
+#: cms/static/js/views/modals/course_outline_modals.js:204
 msgid "Publish {display_name}"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:212
+#: cms/static/js/views/modals/course_outline_modals.js:211
 msgid "Publish all unpublished changes for this {item}?"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:218
-#: cms/templates/js/course-outline.underscore:183
-#: cms/templates/js/course-outline.underscore:185
+#: cms/static/js/views/modals/course_outline_modals.js:217
+#: cms/templates/js/course-outline.underscore:168
+#: cms/templates/js/course-outline.underscore:170
 #: cms/templates/js/publish-xblock.underscore:121
 msgid "Publish"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:239
+#: cms/static/js/views/modals/course_outline_modals.js:238
 msgid "Highlights for {display_name}"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:279
+#: cms/static/js/views/modals/course_outline_modals.js:278
 msgid "Enable Course Highlight Emails"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:297
+#: cms/static/js/views/modals/course_outline_modals.js:296
 msgid "Enable"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:298
+#: cms/static/js/views/modals/course_outline_modals.js:297
 msgid "Not yet"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:338
-msgid "Share {display_name} subsection"
-msgstr ""
-
-#: cms/static/js/views/modals/course_outline_modals.js:973
+#: cms/static/js/views/modals/course_outline_modals.js:867
 msgid "All Learners and Staff"
 msgstr ""
 
 #. #-#-#-#-#  djangojs.po (0.1a)  #-#-#-#-#
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
-#: cms/static/js/views/modals/course_outline_modals.js:1385
+#: cms/static/js/views/modals/course_outline_modals.js:1262
 #: xmodule/js/src/html/edit.js:230
 #: cms/templates/js/add-xblock-component-menu-problem.underscore:13
 msgid "Advanced"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:1397
+#: cms/static/js/views/modals/course_outline_modals.js:1274
 msgid "Basic"
 msgstr ""
 
-#: cms/static/js/views/modals/course_outline_modals.js:1402
+#: cms/static/js/views/modals/course_outline_modals.js:1279
 msgid "Visibility"
-msgstr ""
-
-#: cms/static/js/views/modals/course_outline_modals.js:1487
-msgid "Full Page"
-msgstr ""
-
-#: cms/static/js/views/modals/course_outline_modals.js:1492
-msgid "Embed Link"
 msgstr ""
 
 #. Translators: "title" is the name of the current component being edited.
@@ -1237,53 +1220,53 @@ msgstr ""
 msgid "Editing access for: {title}"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:169
+#: cms/static/js/views/pages/container_subviews.js:168
 msgid "Publishing"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:231
-#: cms/static/js/views/pages/container_subviews.js:233
+#: cms/static/js/views/pages/container_subviews.js:230
+#: cms/static/js/views/pages/container_subviews.js:232
 #: cms/templates/js/course-video-settings-update-org-credentials-footer.underscore:2
 #: cms/templates/js/course-video-settings-update-settings-footer.underscore:2
 #: cms/templates/js/publish-xblock.underscore:126
 msgid "Discard Changes"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:232
+#: cms/static/js/views/pages/container_subviews.js:231
 msgid ""
 "Are you sure you want to revert to the last published version of the unit? "
 "You cannot undo this action."
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:235
+#: cms/static/js/views/pages/container_subviews.js:234
 msgid "Discarding Changes"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:283
+#: cms/static/js/views/pages/container_subviews.js:282
 msgid "Hiding from Students"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:286
+#: cms/static/js/views/pages/container_subviews.js:285
 msgid "Explicitly Hiding from Students"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:289
+#: cms/static/js/views/pages/container_subviews.js:288
 msgid "Inheriting Student Visibility"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:292
-#: cms/static/js/views/pages/container_subviews.js:294
+#: cms/static/js/views/pages/container_subviews.js:291
+#: cms/static/js/views/pages/container_subviews.js:293
 msgid "Make Visible to Students"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:293
+#: cms/static/js/views/pages/container_subviews.js:292
 msgid ""
 "If the unit was previously published and released to students, any changes "
 "you made to the unit when it was hidden will now be visible to students. Do "
 "you want to proceed?"
 msgstr ""
 
-#: cms/static/js/views/pages/container_subviews.js:296
+#: cms/static/js/views/pages/container_subviews.js:295
 msgid "Making Visible to Students"
 msgstr ""
 
@@ -1483,50 +1466,50 @@ msgstr ""
 msgid "Take me to the new location"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:162
+#: cms/static/js/views/utils/xblock_utils.js:159
 msgid "Duplicating"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:189
+#: cms/static/js/views/utils/xblock_utils.js:186
 msgid "Undo moving"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:189
+#: cms/static/js/views/utils/xblock_utils.js:186
 msgid "Moving"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:230
+#: cms/static/js/views/utils/xblock_utils.js:227
 msgid "Deleting this {xblock_type} is permanent and cannot be undone."
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:236
+#: cms/static/js/views/utils/xblock_utils.js:233
 msgid ""
 "Any content that has listed this content as a prerequisite will also have "
 "access limitations removed."
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:239
+#: cms/static/js/views/utils/xblock_utils.js:236
 msgid "Delete this {xblock_type} (and prerequisite)?"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:245
-#: cms/static/js/views/utils/xblock_utils.js:260
+#: cms/static/js/views/utils/xblock_utils.js:242
+#: cms/static/js/views/utils/xblock_utils.js:257
 msgid "Yes, delete this {xblock_type}"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:254
+#: cms/static/js/views/utils/xblock_utils.js:251
 msgid "Delete this {xblock_type}?"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:349
+#: cms/static/js/views/utils/xblock_utils.js:343
 msgid "section"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:351
+#: cms/static/js/views/utils/xblock_utils.js:345
 msgid "subsection"
 msgstr ""
 
-#: cms/static/js/views/utils/xblock_utils.js:353
+#: cms/static/js/views/utils/xblock_utils.js:347
 #: cms/templates/js/container-access.underscore:7
 msgid "unit"
 msgstr ""
@@ -3651,12 +3634,12 @@ msgid "Please enter a username or email."
 msgstr ""
 
 #: lms/static/js/instructor_dashboard/membership.js:198
-#: lms/static/js/instructor_dashboard/membership.js:1049
+#: lms/static/js/instructor_dashboard/membership.js:1029
 msgid "This role requires a divided discussions scheme."
 msgstr ""
 
 #: lms/static/js/instructor_dashboard/membership.js:262
-#: lms/static/js/instructor_dashboard/membership.js:984
+#: lms/static/js/instructor_dashboard/membership.js:964
 msgid "Error changing user's permissions."
 msgstr ""
 
@@ -3704,106 +3687,100 @@ msgstr ""
 msgid "Error adding/removing users as beta testers."
 msgstr ""
 
-#. Translators: For cases when the input field is empty;
-#: lms/static/js/instructor_dashboard/membership.js:518
-#: lms/static/js/instructor_dashboard/membership.js:728
-msgid "This field must not be blank"
-msgstr ""
-
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:534
+#: lms/static/js/instructor_dashboard/membership.js:528
 msgid "These users were successfully added as beta testers:"
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:539
+#: lms/static/js/instructor_dashboard/membership.js:533
 msgid ""
 "These users could not be added as beta testers because their accounts are "
 "not yet activated:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:545
+#: lms/static/js/instructor_dashboard/membership.js:539
 msgid "These users were successfully removed as beta testers:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:558
+#: lms/static/js/instructor_dashboard/membership.js:552
 msgid "These users were not added as beta testers:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:571
+#: lms/static/js/instructor_dashboard/membership.js:565
 msgid "These users were not removed as beta testers:"
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:583
-msgid "Could not find users associated with the following identifiers:"
-msgstr ""
-
-#: lms/static/js/instructor_dashboard/membership.js:592
+#: lms/static/js/instructor_dashboard/membership.js:578
 msgid ""
 "Users must create and activate their account before they can be promoted to "
 "beta tester."
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:617
+#: lms/static/js/instructor_dashboard/membership.js:580
+msgid "Could not find users associated with the following identifiers:"
+msgstr ""
+
+#: lms/static/js/instructor_dashboard/membership.js:611
 msgid "Reason field should not be left blank."
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:638
+#: lms/static/js/instructor_dashboard/membership.js:632
 msgid "Error enrolling/unenrolling users."
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:731
+#: lms/static/js/instructor_dashboard/membership.js:711
 msgid "The following email addresses and/or usernames are invalid:"
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:768
+#: lms/static/js/instructor_dashboard/membership.js:748
 msgid "Successfully enrolled and sent email to the following users:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:780
+#: lms/static/js/instructor_dashboard/membership.js:760
 msgid "Successfully enrolled the following users:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:792
+#: lms/static/js/instructor_dashboard/membership.js:772
 msgid ""
 "Email cannot be sent to the following users via batch enrollment. They will "
 "be allowed to enroll once they register:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:804
+#: lms/static/js/instructor_dashboard/membership.js:784
 msgid "These users will be allowed to enroll once they register:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:816
+#: lms/static/js/instructor_dashboard/membership.js:796
 msgid ""
 "Email cannot be sent to the following users via batch enrollment. They will "
 "be enrolled once they register:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:828
+#: lms/static/js/instructor_dashboard/membership.js:808
 msgid "These users will be enrolled once they register:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:840
+#: lms/static/js/instructor_dashboard/membership.js:820
 msgid ""
 "Emails successfully sent. The following users are no longer enrolled in the "
 "course:"
 msgstr ""
 
 #. Translators: A list of users appears after this sentence;
-#: lms/static/js/instructor_dashboard/membership.js:852
+#: lms/static/js/instructor_dashboard/membership.js:832
 msgid "The following users are no longer enrolled in the course:"
 msgstr ""
 
-#: lms/static/js/instructor_dashboard/membership.js:863
+#: lms/static/js/instructor_dashboard/membership.js:843
 msgid ""
 "These users were not affiliated with the course so could not be unenrolled:"
 msgstr ""
@@ -4212,6 +4189,20 @@ msgstr ""
 msgid "Go to dashboard"
 msgstr ""
 
+#: lms/static/js/learner_dashboard/Static2UCallouts.jsx:47
+msgid "More opportunities for you"
+msgstr ""
+
+#: lms/static/js/learner_dashboard/Static2UCallouts.jsx:48
+msgid " to learn"
+msgstr ""
+
+#: lms/static/js/learner_dashboard/Static2UCallouts.jsx:52
+msgid ""
+"We've added 500+ learning opportunities to create one of the world's most "
+"comprehensive free-to-degree online learning platforms."
+msgstr ""
+
 #: lms/static/js/learner_dashboard/models/course_card_model.js:168
 msgid "(Self-paced) Starts {start}"
 msgstr ""
@@ -4427,30 +4418,31 @@ msgstr ""
 msgid "Error: "
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:41
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:97
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:42
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:98
 msgid ""
 "You may also lose access to verified certificates and other program "
-"credentials. You can make a copy of these for your records before proceeding "
-"with deletion."
+"credentials like MicroMasters certificates. If you want to make a copy of "
+"these for your records before proceeding with deletion, follow the "
+"instructions for {htmlStart}printing or downloading a certificate{htmlEnd}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:46
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:52
 msgid ""
 "Before proceeding, please {htmlStart}unlink all social media "
 "accounts{htmlEnd}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:54
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:60
 msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:63
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:69
 msgid ""
 "{htmlStart}Want to change your email, name, or password instead?{htmlEnd}"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:71
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:77
 msgid ""
 "{strongStart}Warning: Account deletion is permanent.{strongEnd} Please read "
 "the above carefully before proceeding. This is an irreversible action, and "
@@ -4458,31 +4450,31 @@ msgid ""
 "{platformName}.{strongEnd}"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:80
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:86
 msgid ""
 "Please note: Deletion of your account and personal data is permanent and "
 "cannot be undone. {platformName} will not be able to recover your account or "
 "the data that is deleted."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:87
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:93
 msgid ""
 "Once your account is deleted, you cannot use it to take courses on the "
 "{platformName} app, {siteName}, or any other site hosted by {platformName}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:95
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:115
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:101
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:121
 msgid ""
 "This includes access to {siteName} from your employer’s or university’s "
 "system{additionalSiteSpecificDeletionText}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:104
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:110
 msgid "We’re sorry to see you go!"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:125
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx:135
 #: lms/static/js/student_account/views/account_settings_factory.js:352
 msgid "Delete My Account"
 msgstr ""
@@ -4509,35 +4501,35 @@ msgstr ""
 msgid "A Password is required"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:100
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:106
 msgid ""
 "You have selected “Delete my account.” Deletion of your account and personal "
 "data is permanent and cannot be undone. {platformName} will not be able to "
 "recover your account or the data that is deleted."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:107
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:113
 msgid ""
 "If you proceed, you will be unable to use this account to take courses on "
 "the {platformName} app, {siteName}, or any other site hosted by "
 "{platformName}."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:172
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:178
 msgid ""
 "If you still wish to continue and delete your account, please enter your "
 "account password:"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:190
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:196
 msgid "Yes, Delete"
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:204
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:210
 msgid "We're sorry to see you go! Your account will be deleted shortly."
 msgstr ""
 
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:206
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx:212
 msgid ""
 "Account deletion, including removal from email lists, may take a few weeks "
 "to fully process through our system. If you want to opt-out of emails before "
@@ -5338,7 +5330,7 @@ msgstr ""
 msgid "This problem has been reset."
 msgstr ""
 
-#: xmodule/js/src/capa/display.js:1018
+#: xmodule/js/src/capa/display.js:1017
 msgid "unsubmitted"
 msgstr ""
 
@@ -6955,8 +6947,8 @@ msgstr ""
 
 #: cms/templates/js/asset-library.underscore:57
 #: cms/templates/js/basic-modal.underscore:24
-#: cms/templates/js/course-outline.underscore:201
-#: cms/templates/js/course-outline.underscore:203
+#: cms/templates/js/course-outline.underscore:186
+#: cms/templates/js/course-outline.underscore:188
 #: lms/templates/instructor/instructor_dashboard_2/enrollment-code-lookup-links.underscore:6
 msgid "Actions"
 msgstr ""
@@ -7141,50 +7133,44 @@ msgid "Subsection Visibility"
 msgstr ""
 
 #: cms/templates/js/content-visibility-editor.underscore:7
-msgid ""
-"To hide the subsections and keep them accesible through links, you must "
-"adjust it from the section that contains them."
-msgstr ""
-
-#: cms/templates/js/content-visibility-editor.underscore:13
 msgid "Show entire subsection"
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:15
+#: cms/templates/js/content-visibility-editor.underscore:9
 msgid "Learners see the published subsection and can access its content."
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:19
+#: cms/templates/js/content-visibility-editor.underscore:13
 msgid "Hide content after course end date"
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:21
+#: cms/templates/js/content-visibility-editor.underscore:15
 msgid "Hide content after due date"
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:26
+#: cms/templates/js/content-visibility-editor.underscore:20
 msgid ""
 "After the course\\'s end date has passed, learners can no longer access "
 "subsection content. The subsection remains included in grade calculations."
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:28
+#: cms/templates/js/content-visibility-editor.underscore:22
 msgid ""
 "After the subsection\\'s due date has passed, learners can no longer access "
 "its content. The subsection remains included in grade calculations."
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:33
+#: cms/templates/js/content-visibility-editor.underscore:27
 msgid "Hide entire subsection"
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:36
+#: cms/templates/js/content-visibility-editor.underscore:30
 msgid ""
 "Learners do not see the subsection in the course outline. The subsection is "
 "not included in grade calculations."
 msgstr ""
 
-#: cms/templates/js/content-visibility-editor.underscore:42
+#: cms/templates/js/content-visibility-editor.underscore:36
 #, python-format
 msgid ""
 "If you select an option other than \"%(hide_label)s\", published units in "
@@ -7272,196 +7258,180 @@ msgstr ""
 msgid "Upload Photo"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:48
+#: cms/templates/js/course-outline.underscore:42
 #, python-format
 msgid "Prerequisite: %(prereq_display_name)s"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:56
+#: cms/templates/js/course-outline.underscore:50
 msgid "Contains staff only content"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:60
-msgid ""
-"Hidden in the course outline, but sections are accessible for your learners "
-"through their separate link."
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore:63
-msgid ""
-"Subsections are not navigable between each other, they can only be accessed "
-"through their link."
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore:71
+#: cms/templates/js/course-outline.underscore:56
 msgid "Unpublished changes to live content"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:73
+#: cms/templates/js/course-outline.underscore:58
 msgid "Unpublished units will not be released"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:75
+#: cms/templates/js/course-outline.underscore:60
 msgid "Unpublished changes to content that will release in the future"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:83
+#: cms/templates/js/course-outline.underscore:68
 msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:92
+#: cms/templates/js/course-outline.underscore:77
 msgid ""
 "Access to some content in this unit is restricted to specific groups of "
 "learners"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:97
+#: cms/templates/js/course-outline.underscore:82
 msgid "Ungraded"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:114
+#: cms/templates/js/course-outline.underscore:99
 msgid "Onboarding Exam"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:116
+#: cms/templates/js/course-outline.underscore:101
 msgid "Practice proctored Exam"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:118
+#: cms/templates/js/course-outline.underscore:103
 msgid "Proctored Exam"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:122
+#: cms/templates/js/course-outline.underscore:107
 msgid "Timed Exam"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:135
+#: cms/templates/js/course-outline.underscore:120
 #: cms/templates/js/xblock-outline.underscore:11
 #, python-format
 msgid "Collapse/Expand this %(xblock_type)s"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:148
-#: cms/templates/js/course-outline.underscore:153
+#: cms/templates/js/course-outline.underscore:133
+#: cms/templates/js/course-outline.underscore:138
 msgid "Display Name"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:169
+#: cms/templates/js/course-outline.underscore:154
 msgid "Discussions enabled"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:176
-#: cms/templates/js/course-outline.underscore:177
+#: cms/templates/js/course-outline.underscore:161
+#: cms/templates/js/course-outline.underscore:162
 msgid "Proctoring Settings"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:210
-#: cms/templates/js/course-outline.underscore:240
-#: cms/templates/js/course-outline.underscore:242
+#: cms/templates/js/course-outline.underscore:195
+#: cms/templates/js/course-outline.underscore:225
+#: cms/templates/js/course-outline.underscore:227
 msgid "Configure"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:216
+#: cms/templates/js/course-outline.underscore:201
 #: cms/templates/js/tag-count.underscore:2
 #: cms/templates/js/tag-count.underscore:5
 msgid "Manage Tags"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:220
+#: cms/templates/js/course-outline.underscore:205
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:225
-#: cms/templates/js/course-outline.underscore:248
-#: cms/templates/js/course-outline.underscore:250
+#: cms/templates/js/course-outline.underscore:210
+#: cms/templates/js/course-outline.underscore:233
+#: cms/templates/js/course-outline.underscore:235
 msgid "Duplicate"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:265
-#: cms/templates/js/course-outline.underscore:267
+#: cms/templates/js/course-outline.underscore:250
+#: cms/templates/js/course-outline.underscore:252
 msgid "Drag to reorder"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:285
+#: cms/templates/js/course-outline.underscore:270
 msgid "Release Status:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:290
+#: cms/templates/js/course-outline.underscore:275
 #: cms/templates/js/publish-xblock.underscore:15
 #: cms/templates/js/xblock-outline.underscore:43
 msgid "Released:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:293
+#: cms/templates/js/course-outline.underscore:278
 #: cms/templates/js/publish-xblock.underscore:17
 msgid "Scheduled:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:296
+#: cms/templates/js/course-outline.underscore:281
 #: cms/templates/js/publish-xblock.underscore:72
 #: lms/templates/ccx/schedule.underscore:93
 #: lms/templates/ccx/schedule.underscore:103
 msgid "Unscheduled"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:311
+#: cms/templates/js/course-outline.underscore:296
 #: cms/templates/js/highlights-editor.underscore:2
 msgid "Section Highlights"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:318
-#: cms/templates/js/course-outline.underscore:351
-#: cms/templates/js/course-outline.underscore:381
+#: cms/templates/js/course-outline.underscore:303
+#: cms/templates/js/course-outline.underscore:336
+#: cms/templates/js/course-outline.underscore:366
 msgid "Graded as:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:325
-#: cms/templates/js/course-outline.underscore:355
+#: cms/templates/js/course-outline.underscore:310
+#: cms/templates/js/course-outline.underscore:340
 msgid "Due:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:410
+#: cms/templates/js/course-outline.underscore:395
 msgid "Subsection is hidden after course end date"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:412
+#: cms/templates/js/course-outline.underscore:397
 msgid "Subsection is hidden after due date"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:428
-msgid "Share"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore:442
+#: cms/templates/js/course-outline.underscore:420
 #, python-format
 msgid ""
 "This subsection is configured as \\\"%(gradingType)s\\\", which doesn't "
 "exist in the current grading policy."
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:457
+#: cms/templates/js/course-outline.underscore:435
 #: cms/templates/js/xblock-outline.underscore:57
 msgid "You haven't added any content to this course yet."
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:461
-#: cms/templates/js/course-outline.underscore:482
+#: cms/templates/js/course-outline.underscore:439
+#: cms/templates/js/course-outline.underscore:460
 #: cms/templates/js/xblock-outline.underscore:61
 #: cms/templates/js/xblock-outline.underscore:77
 #, python-format
 msgid "Click to add a new %(xblock_type)s"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:501
+#: cms/templates/js/course-outline.underscore:479
 #, python-format
 msgid "Paste %(xblock_type)s"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:510
+#: cms/templates/js/course-outline.underscore:488
 msgid "From:"
 msgstr ""
 
-#: cms/templates/js/course-outline.underscore:513
+#: cms/templates/js/course-outline.underscore:491
 msgid "What's in my clipboard?"
 msgstr ""
 
@@ -7662,12 +7632,8 @@ msgstr ""
 msgid "Topics for unpublished units would not be created"
 msgstr ""
 
-#: cms/templates/js/discussion-editor.underscore:16
-msgid "Please enable discussions for graded units from the"
-msgstr ""
-
-#: cms/templates/js/discussion-editor.underscore:24
-msgid "Discussion Configuration"
+#: cms/templates/js/discussion-editor.underscore:15
+msgid "Please enable discussions for graded units from course authoring app"
 msgstr ""
 
 #: cms/templates/js/due-date-editor.underscore:3
@@ -7743,28 +7709,6 @@ msgstr ""
 
 #: cms/templates/js/edit-title-button.underscore:1
 msgid "Edit Title"
-msgstr ""
-
-#: cms/templates/js/embed-link-share-link-editor.underscore:5
-msgid ""
-"Embed your subsection content directly on a page using an iframe, and view "
-"it without the LMS header and footer."
-msgstr ""
-
-#: cms/templates/js/embed-link-share-link-editor.underscore:11
-#: cms/templates/js/full-page-share-link-editor.underscore:11
-msgid "Click to copy link to clipboard"
-msgstr ""
-
-#: cms/templates/js/embed-link-share-link-editor.underscore:15
-#: cms/templates/js/full-page-share-link-editor.underscore:15
-msgid "Copy link"
-msgstr ""
-
-#: cms/templates/js/full-page-share-link-editor.underscore:5
-msgid ""
-"When sharing this link with your learners, they will see the content of the "
-"subsection along with the header and footer of your LMS."
 msgstr ""
 
 #: cms/templates/js/grading-editor.underscore:1
@@ -8087,7 +8031,7 @@ msgid "Staff and Learners"
 msgstr ""
 
 #: cms/templates/js/publish-xblock.underscore:108
-#: cms/templates/js/staff-lock-editor.underscore:37
+#: cms/templates/js/staff-lock-editor.underscore:12
 msgid "Hide from learners"
 msgstr ""
 
@@ -8259,44 +8203,13 @@ msgstr ""
 msgid "Section Visibility"
 msgstr ""
 
-#: cms/templates/js/staff-lock-editor.underscore:14
-msgid "Visible to learners"
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:16
-msgid ""
-"It is visible to learners, ensuring that all learners can view its contents."
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:22
-msgid "Hide in Course Outline, accessible via Link"
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:24
-msgid ""
-"It is intentionally hidden from standard navigation, ensuring that only "
-"individuals with the link can view its contents."
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:27
-msgid ""
-"If you make this section visible in the table of content, learners will be "
-"able to see its content."
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:40
-msgid ""
-"It is intentionally hidden from learners, ensuring that only the course "
-"staff can view its contents."
-msgstr ""
-
-#: cms/templates/js/staff-lock-editor.underscore:45
+#: cms/templates/js/staff-lock-editor.underscore:17
 msgid ""
 "If the unit was previously published and released to learners, any changes "
 "you made to the unit when it was hidden will now be visible to learners."
 msgstr ""
 
-#: cms/templates/js/staff-lock-editor.underscore:47
+#: cms/templates/js/staff-lock-editor.underscore:19
 #, python-format
 msgid ""
 "If you make this %(xblockType)s visible to learners, learners will be able "
