@@ -133,7 +133,7 @@ msgid "Please vote!"
 msgstr ""
 
 #: static/html/feedback_instructor.html:10
-msgid "Component"
+msgid "Unit"
 msgstr ""
 
 #: static/html/feedback_instructor.html:13
@@ -146,6 +146,10 @@ msgstr ""
 
 #: static/html/feedback_instructor.html:19
 msgid "Feedback "
+msgstr ""
+
+#: static/html/feedback_instructor.html:27
+msgid "See Unit"
 msgstr ""
 
 #: static/html/feedback_instructor.html:40
